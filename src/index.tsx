@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/global.css';
-// import App from './App';
-import SignUp from './pages/SignIn/signUp';
+import TheRoutes from './routes';
+
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <SignUp />
+    <BrowserRouter>
+      <TheRoutes />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
