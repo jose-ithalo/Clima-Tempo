@@ -1,0 +1,40 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formButton {
+    background: #0575E6;
+    border: transparent;
+    border-radius: 30px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+
+    padding: 18px 25px;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
+
+input {
+    background: #FFF;
+    border: 1px solid #EEE;
+    border-radius: 30px;
+    padding: 18px 25px;
+    width: 100%;
+}
+
+.userArea {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 0 120px;
+}
+
+.userArea h1 {
+    color: rgba(51, 51, 51, 1);
+    font-size: 26px;
+    margin-bottom: 50px;
+}
