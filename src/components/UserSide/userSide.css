@@ -11,20 +11,41 @@ form {
     color: #fff;
     font-family: 'Poppins', sans-serif;
 
-    padding: 18px 25px;
+    padding: 18px 30px;
 
     &:hover {
         cursor: pointer;
         opacity: 0.9;
     }
+
+}
+
+.iconInput {
+    position: relative;
+    bottom: 53px;
+    left: 20px;
+
+    opacity: 0.3;
+
+    width: 18px;
+}
+
+.iconInputEmail {
+    bottom: 50px;
 }
 
 input {
     background: #FFF;
     border: 1px solid #EEE;
     border-radius: 30px;
-    padding: 18px 25px;
+    font-family: 'Poppins', sans-serif;
+    padding: 18px 50px;
     width: 100%;
+
+    &::placeholder {
+        color: #333;
+        opacity: 0.3;
+    }
 }
 
 .userArea {
