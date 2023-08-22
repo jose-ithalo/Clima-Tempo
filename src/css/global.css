@@ -26,3 +26,12 @@ code {
   display: flex;
   align-items: center;
 }
+
+.rightSide {
+  min-height: 100vh;
+  width: calc(100vw - 60%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
