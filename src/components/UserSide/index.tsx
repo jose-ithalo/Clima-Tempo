@@ -3,13 +3,20 @@ import userIcon from '../../assets/userIcon.svg';
 import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
 
-function UserSide() {
+import TForm from '../../types/formType';
+
+function UserSide({ headline, inputName, btnAction }: TForm) {
     return (
         <div className='userArea'>
-            <h1>Crie sua conta</h1>
+            <h1>{headline}</h1>
             <form>
-                <input type='text' placeholder='Nome completo' />
-                <img src={userIcon} alt="Ícone usuário" className='iconInput' />
+                {
+                    inputName &&
+                    <>
+                        <input type='text' placeholder='Nome completo' />
+                        <img src={userIcon} alt="Ícone usuário" className='iconInput' />
+                    </>
+                }
 
                 <input type='email' placeholder='Email' />
                 <img src={emailIcon} alt="Ícone e-mail" className='iconInput iconInputEmail' />
@@ -17,8 +24,10 @@ function UserSide() {
                 <input type='password' placeholder='Senha' />
                 <img src={padlock} alt="padlock" className='iconInput' />
 
-                <button className='formButton' type='submit'>Registrar</button>
+                <button className='formButton' type='submit'>{btnAction}</button>
             </form>
+
+            <span>Esqueci a senha</span>
         </div>
     );
 }
