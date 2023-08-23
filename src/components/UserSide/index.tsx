@@ -4,14 +4,24 @@ import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
 
 import TForm from '../../types/formType';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
+
+    const navigate = useNavigate();
+
+    function handleSubmit() {
+
+        if (btnAction === 'Registrar') {
+            navigate('/Login');
+        }
+    }
+
     return (
         <div className='userArea'>
             <h1>{headline}</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 {
                     inputName &&
                     <>
