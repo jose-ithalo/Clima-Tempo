@@ -39,7 +39,7 @@ input {
     border: 1px solid #EEE;
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
-    padding: 18px 50px;
+    padding: 18px 45px;
     width: 100%;
 
     &::placeholder {
