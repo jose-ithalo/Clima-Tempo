@@ -4,8 +4,10 @@ import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
 
 import TForm from '../../types/formType';
+import { Link } from 'react-router-dom';
 
-function UserSide({ headline, inputName, btnAction }: TForm) {
+
+function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
     return (
         <div className='userArea'>
             <h1>{headline}</h1>
@@ -27,7 +29,10 @@ function UserSide({ headline, inputName, btnAction }: TForm) {
                 <button className='formButton' type='submit'>{btnAction}</button>
             </form>
 
-            <span>Esqueci a senha</span>
+            {passForget && <span className='redirection'>Esqueci a senha</span>}
+
+            {linkAction && <Link to='/SignUp' className='redirection'>Criar conta</Link>}
+
         </div>
     );
 }
