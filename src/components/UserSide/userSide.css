@@ -11,6 +11,7 @@ form {
     color: #fff;
     font-family: 'Poppins', sans-serif;
 
+    margin-bottom: 15px;
     padding: 18px 30px;
 
     &:hover {
@@ -46,6 +47,21 @@ input {
         color: #333;
         opacity: 0.3;
     }
+}
+
+.redirection {
+    color: #333;
+    font-size: 14px;
+    opacity: 0.7;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.redirection:hover {
+    cursor: pointer;
+    color: rgb(4, 94, 185);
 }
 
 .userArea {
