@@ -15,7 +15,10 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
 
         if (btnAction === 'Registrar') {
             navigate('/Login');
+        } else if (btnAction === 'Entrar') {
+            navigate('/Home');
         }
+
     }
 
     return (
