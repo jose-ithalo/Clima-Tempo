@@ -1,6 +1,7 @@
 import './home.css';
 import menuIcon from '../../assets/menuIcon.svg';
 import logout from '../../assets/logout.svg';
+import avatar from '../../assets/avatar.svg';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -21,7 +22,9 @@ function Home() {
                 </div>
             </div>
             <div className='contentHome'>
-                <header></header>
+                <header>
+                    <img src={avatar} alt="Avatar" title='Usuário logado' />
+                </header>
                 <main>
                     <h1>Content Home</h1>
                 </main>
