@@ -3,6 +3,7 @@ import menuIcon from '../../assets/menuIcon.svg';
 import logout from '../../assets/logout.svg';
 import avatar from '../../assets/avatar.svg';
 import cloud from '../../assets/cloud.svg';
+import plus from '../../assets/plus.svg';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -27,7 +28,7 @@ function Home() {
                     <img src={avatar} alt="Avatar" title='Usuário logado' />
                 </header>
                 <main>
-                    <div className='fieldDetail'>
+                    <section className='fieldDetail'>
                         <div className='leftDetails'>
                             <div>
                                 <img src={cloud} alt='Ícone' className='iconWeather' />
@@ -42,7 +43,16 @@ function Home() {
                             <h2>7:30 pm</h2>
                             <h3>Quarta-feira</h3>
                         </div>
-                    </div>
+                    </section>
+                    <section className='fieldOption'>
+                        <div className='upperContent'>
+                            <h3>Temperaturas</h3>
+                            <button className='addButton'>
+                                <img src={plus} alt="Sinal de mais" />
+                                Adicionar cidade
+                            </button>
+                        </div>
+                    </section>
                 </main>
             </div>
         </div>
