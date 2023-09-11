@@ -4,6 +4,8 @@ import logout from '../../assets/logout.svg';
 import avatar from '../../assets/avatar.svg';
 import cloud from '../../assets/cloud.svg';
 import plus from '../../assets/plus.svg';
+
+import CardWeather from '../../components/CardWeather';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -51,6 +53,15 @@ function Home() {
                                 <img src={plus} alt="Sinal de mais" />
                                 Adicionar cidade
                             </button>
+                        </div>
+                        <div className='weatherReports'>
+                            <CardWeather />
+                            <CardWeather />
+                            <CardWeather />
+                            <CardWeather />
+                            <CardWeather />
+                            <CardWeather />
+
                         </div>
                     </section>
                 </main>
