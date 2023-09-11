@@ -1,0 +1,47 @@
+.card {
+    background-color: gray;
+    border-radius: 25px;
+    box-shadow: 5px 20px 15px 0 black;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 50px 30px;
+    padding: 18px;
+    height: 336px;
+    width: 17%;
+    max-width: 230px;
+    min-width: 175px;
+}
+
+
+
+.bottomCard {
+    color: #020419;
+    font-family: Source Sans Pro;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.bottomCard h4 {
+    margin: 0 8px;
+}
+
+.countryCard {
+
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0 35px 0;
+}
+
+.cityCard {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.tempCard {
+    font-size: 110px;
+    font-weight: 300;
+}
