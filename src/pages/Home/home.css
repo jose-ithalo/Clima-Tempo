@@ -27,7 +27,6 @@
     opacity: 0.7;
 }
 
-
 .contentHome {
     border-left: 2px solid #EFECEC;
     height: calc(100% - 150px);
@@ -75,7 +74,7 @@
 .fieldOption {
     font-family: 'Roboto', sans-serif;
     margin-top: 85px;
-    padding: 0 60px 0 40px;
+    padding: 0 50px 0 40px;
 }
 
 .fieldOption h3 {
@@ -121,5 +120,5 @@ main {
 .weatherReports {
     display: flex;
     flex-wrap: wrap;
-    margin: 60px 0 -60px -35px;
+    margin: 30px 0 -60px -35px;
 }
