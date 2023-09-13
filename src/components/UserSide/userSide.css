@@ -1,3 +1,12 @@
+.containerUser {
+    min-height: 100vh;
+    width: calc(100vw - 60%);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 form {
     display: flex;
     flex-direction: column;
@@ -70,7 +79,7 @@ input {
     padding: 0 120px;
 }
 
-.userArea h1 {
+.userArea h2 {
     color: rgba(51, 51, 51, 1);
     font-size: 26px;
     margin-bottom: 50px;

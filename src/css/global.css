@@ -27,11 +27,12 @@ code {
   align-items: center;
 }
 
-.rightSide {
-  min-height: 100vh;
-  width: calc(100vw - 60%);
+.hiddenTitle {
+  display: none;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.firstTitle {
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
 }
