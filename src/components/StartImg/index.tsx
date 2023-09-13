@@ -3,7 +3,7 @@ import './startImg.css';
 function StartImg() {
     return (
         <div className="startImg">
-            <h1>ClimaTempo</h1>
+            <h1 className='firstTitle'>ClimaTempo</h1>
         </div>
     );
 }
