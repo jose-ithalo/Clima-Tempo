@@ -1,0 +1,44 @@
+@media (max-width: 480px) {
+
+    .firstTitle{
+        font-size: 30px;
+    }
+
+    .userArea {
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1140px) {
+    
+    .userArea {
+        padding: 0 250px;
+    }
+}
+
+@media (max-width: 1140px) {
+
+    .containerUser {
+        background-image: url('../assets/leftContent.png');
+        width: 100%;
+    }
+
+    .hiddenTitle {
+        display: block;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .redirection{
+        color: rgba(223, 234, 235, 0.973);
+      }
+    
+    .startImg{
+        display: none;
+      }
+
+      .userArea h2 {
+        color: rgba(255, 255, 255, 1);;
+        text-align: center;
+      }
+}
