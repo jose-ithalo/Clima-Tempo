@@ -1,6 +1,6 @@
 @media (max-width: 480px) {
 
-    .firstTitle{
+    .firstTitle {
         font-size: 30px;
     }
 
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 900px) and (max-width: 1140px) {
-    
+
     .userArea {
         padding: 0 250px;
     }
@@ -18,7 +18,7 @@
 
 @media (max-width: 1140px) {
 
-    .containerUser {
+    .userArea {
         background-image: url('../assets/leftContent.png');
         width: 100%;
     }
@@ -27,18 +27,19 @@
         display: block;
         text-align: center;
         margin-bottom: 40px;
-      }
+    }
 
-      .redirection{
+    .redirection {
         color: rgba(223, 234, 235, 0.973);
-      }
-    
-    .startImg{
-        display: none;
-      }
+    }
 
-      .userArea h2 {
-        color: rgba(255, 255, 255, 1);;
+    .startImg {
+        display: none;
+    }
+
+    .userArea h2 {
+        color: rgba(255, 255, 255, 1);
+        ;
         text-align: center;
-      }
+    }
 }
