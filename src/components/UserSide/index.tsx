@@ -22,8 +22,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
     }
 
     return (
-        <div className="containerUser">
-            <div className='userArea'>
+        <div className='userArea'>
             <h1 className='firstTitle hiddenTitle'>ClimaTempo</h1>
             <h2>{headline}</h2>
             <form onSubmit={handleSubmit}>
@@ -49,8 +48,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
             {linkAction && <Link to='/SignUp' className='redirection'>Criar conta</Link>}
 
         </div>
-        </div>
-        
+
     );
 }
 

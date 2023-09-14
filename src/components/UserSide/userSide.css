@@ -1,11 +1,13 @@
-.containerUser {
+.userArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 120px;
+
     min-height: 100vh;
     width: calc(100vw - 60%);
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+}
 
 form {
     display: flex;
@@ -71,12 +73,6 @@ input {
 .redirection:hover {
     cursor: pointer;
     color: rgb(4, 94, 185);
-}
-
-.userArea {
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    padding: 0 120px;
 }
 
 .userArea h2 {
