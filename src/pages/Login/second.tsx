@@ -5,10 +5,9 @@ function SecondLogin() {
     return (
         <div className="container">
             <StartImg />
-            <div className='rightSide'>
-                <UserSide headline='Olá, novamente!' inputName={false}
-                    btnAction='Entrar' passForget={true} />
-            </div>
+
+            <UserSide headline='Olá, novamente!' inputName={false}
+                btnAction='Entrar' passForget={true} />
         </div>
     );
 }
