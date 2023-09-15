@@ -19,11 +19,9 @@ function Home() {
 
     return (
         <div className="containerHome">
-            <div className='SideBar'>
-                <div className='navField'>
-                    <img src={menuIcon} alt="Menu" title='Menu' className='iconBar' />
-                    <img src={logout} alt="Logout" title='Sair' className='iconBar' onClick={handleLogout} />
-                </div>
+            <div className='sideBar'>
+                <img src={menuIcon} alt="Menu" title='Menu' className='iconBar' />
+                <img src={logout} alt="Logout" title='Sair' className='iconBar' onClick={handleLogout} />
             </div>
             <div className='contentHome'>
                 <header>
