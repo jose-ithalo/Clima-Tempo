@@ -1,11 +1,80 @@
 @media (max-width: 480px) {
 
+    .fieldDetail {
+        align-items: flex-start;
+    }
+
     .firstTitle {
         font-size: 30px;
     }
 
     .userArea {
         padding: 0 20px;
+    }
+}
+
+@media (max-width: 580px) {
+
+    .addButton {
+        margin-top: 25px;
+    }
+
+    .fieldDetail h3 {
+        font-size: 20px;
+    }
+
+    .fieldOption {
+        margin-top: 40px;
+    }
+
+    .leftDetails h1 {
+        font-size: 80px;
+    }
+
+    .rightDetails h2 {
+        font-size: 25px;
+    }
+
+    .upperContent {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 835px) {
+
+    .contentHome {
+        width: 100%;
+    }
+
+    .fieldDetail {
+        padding: 20px 4%;
+    }
+
+    .fieldOption {
+        padding: 0 10px 0 40px;
+    }
+
+    .iconBar {
+        margin-left: 20px;
+    }
+
+    main {
+        padding: 15px 8px 0 8px;
+    }
+
+    .sideBar {
+        flex-direction: row-reverse;
+        position: absolute;
+        top: 20px;
+        left: 15%;
+
+        height: 50px;
+    }
+
+    .weatherReports {
+        align-items: center;
+        justify-content: center;
+        margin: 40px 40px 0 0;
     }
 }
 
@@ -41,5 +110,21 @@
         color: rgba(255, 255, 255, 1);
         ;
         text-align: center;
+    }
+}
+
+@media (max-width: 1370px) {
+    .card {
+        height: 285px;
+        width: 140px;
+    }
+
+    .cityCard {
+        font-size: 17px;
+        margin-top: 5px;
+    }
+
+    .tempCard {
+        font-size: 70px;
     }
 }
