@@ -4,18 +4,27 @@ import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
 
 import TForm from '../../types/formType';
+import HookForm from '../../types/hookForm';
 import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
 
     const navigate = useNavigate();
 
-    function handleSubmit() {
+    const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
+
+    console.log(errors);
+
+    function onSubmit(data: HookForm) {
 
         if (btnAction === 'Registrar') {
             navigate('/Login');
-        } else if (btnAction === 'Entrar') {
+        }
+
+        if (btnAction === 'Entrar') {
+            console.log(data)
             navigate('/Home');
         }
 
@@ -25,7 +34,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
         <div className='userArea'>
             <h1 className='firstTitle hiddenTitle'>ClimaTempo</h1>
             <h2>{headline}</h2>
-            <form onSubmit={handleSubmit}>
+            <form>
                 {
                     inputName &&
                     <>
@@ -34,13 +43,15 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
                     </>
                 }
 
-                <input type='email' placeholder='Email' />
+                <input type='email' placeholder='Email' {...register('email', { required: true })} />
                 <img src={emailIcon} alt="Ícone e-mail" className='iconInput iconInputEmail' />
 
-                <input type='password' placeholder='Senha' />
+                <input type='password' placeholder='Senha' {...register('password')} />
                 <img src={padlock} alt="padlock" className='iconInput' />
 
-                <button className='formButton' type='submit'>{btnAction}</button>
+                <button className='formButton' type='button' onClick={() => handleSubmit(onSubmit)()}>
+                    {btnAction}
+                </button>
             </form>
 
             {passForget && <span className='redirection'>Esqueci a senha</span>}
