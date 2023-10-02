@@ -5,9 +5,13 @@ import padlock from '../../assets/padlock.svg';
 
 import TForm from '../../types/formType';
 import HookForm from '../../types/hookForm';
+import AxiosResponse from '../../types/axiosResponse';
+
+
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
+import api from '../../services/apiBase';
 
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
@@ -16,15 +20,37 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
 
-    function onSubmit(data: HookForm) {
+    async function onSubmit(data: HookForm) {
 
         if (btnAction === 'Registrar') {
             navigate('/Login');
         }
 
         if (btnAction === 'Entrar') {
-            console.log(data)
-            navigate('/Home');
+            console.log(data);
+
+            try {
+
+                const response = await api.post('/login', {
+                    email: data.email,
+                    password: data.password
+                });
+
+                console.log(response);
+
+                navigate('/Home');
+            } catch (error) {
+                console.log(error);
+                if (error !== null && typeof error === 'object'
+                    && 'response' in error && typeof error.response === 'object') {
+
+                    const { data } = error.response as AxiosResponse;
+
+                    if ('message' in data) {
+                        alert(data.message);
+                    }
+                }
+            }
         }
     }
 
