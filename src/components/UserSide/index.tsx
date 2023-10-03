@@ -18,7 +18,7 @@ import fileContext from '../../context/fileContext';
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
 
-    const { setErrorContent, setErrorState } = useContext<any>(fileContext);
+    const { setErrorContent, setErrorState, setSuccessState } = useContext<any>(fileContext);
 
     const navigate = useNavigate();
 
@@ -27,11 +27,40 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
     async function onSubmit(data: HookForm) {
 
         if (btnAction === 'Registrar') {
-            navigate('/Login');
+
+            try {
+
+                await api.post('users', {
+                    username: data.userName,
+                    email: data.email,
+                    password: data.password
+                });
+
+                setSuccessState(true);
+                setTimeout((): void => {
+                    setSuccessState(false);
+                    navigate('/Login');
+                }, 5000);
+
+
+            } catch (error) {
+                if (error !== null && typeof error === 'object'
+                    && 'response' in error && typeof error.response === 'object') {
+
+                    const { data } = error.response as AxiosResponse;
+
+                    if ('message' in data) {
+                        setErrorContent(data.message);
+                        setErrorState(true);
+                        setTimeout((): void => {
+                            setErrorState(false);
+                        }, 7000);
+                    }
+                }
+            }
         }
 
         if (btnAction === 'Entrar') {
-            console.log(data);
 
             try {
 
