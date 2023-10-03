@@ -22,8 +22,12 @@ function TheRoutes() {
   const [errorState, setErrorState] = useState<boolean>(false);
   const [errorContent, setErrorContent] = useState<string>('');
 
+  const [successState, setSuccessState] = useState<boolean>(false);
+
   return (
-    <fileContext.Provider value={{ errorState, setErrorState, errorContent, setErrorContent }}>
+    <fileContext.Provider value={
+      { errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState }
+    }>
 
       <Routes>
         <Route path="/" element={<Login />} />
