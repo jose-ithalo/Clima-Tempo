@@ -7,14 +7,18 @@ import TForm from '../../types/formType';
 import HookForm from '../../types/hookForm';
 import AxiosResponse from '../../types/axiosResponse';
 
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
 import api from '../../services/apiBase';
 
+import { useContext } from 'react';
+import fileContext from '../../context/fileContext';
+
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
+
+    const { setErrorContent, setErrorState } = useContext<any>(fileContext);
 
     const navigate = useNavigate();
 
@@ -40,14 +44,17 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
 
                 navigate('/Home');
             } catch (error) {
-                console.log(error);
                 if (error !== null && typeof error === 'object'
                     && 'response' in error && typeof error.response === 'object') {
 
                     const { data } = error.response as AxiosResponse;
 
                     if ('message' in data) {
-                        alert(data.message);
+                        setErrorContent(data.message);
+                        setErrorState(true);
+                        setTimeout((): void => {
+                            setErrorState(false);
+                        }, 7000);
                     }
                 }
             }
