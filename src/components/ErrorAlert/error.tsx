@@ -1,9 +1,8 @@
-import './error.css';
 import ContentError from '../../types/contentError';
 
 function ErrorAlert({ content }: ContentError) {
     return (
-        <div className="errorPopup">
+        <div className="popupAlert" style={{ backgroundColor: '#d43939' }}>
             {content}
         </div>
     );
