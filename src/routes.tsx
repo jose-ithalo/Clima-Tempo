@@ -1,5 +1,8 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
-import SignUp from "./pages/SignIn";
+import { useState } from "react";
+
+import fileContext from "./context/fileContext";
+import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import SecondLogin from "./pages/Login/second";
 import Home from "./pages/Home";
@@ -15,17 +18,24 @@ function ProtectedRoutes({ redirectTo }: RouterProp) {
 }
 
 function TheRoutes() {
+
+  const [errorState, setErrorState] = useState<boolean>(false);
+  const [errorContent, setErrorContent] = useState<string>('');
+
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/Login" element={<SecondLogin />} />
-      <Route path="/SignUp" element={<SignUp />} />
+    <fileContext.Provider value={{ errorState, setErrorState, errorContent, setErrorContent }}>
 
-      <Route element={<ProtectedRoutes redirectTo={'/'} />}>
-        <Route path="/Home" element={<Home />} />
-      </Route>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Login" element={<SecondLogin />} />
+        <Route path="/SignUp" element={<SignUp />} />
 
-    </Routes>
+        <Route element={<ProtectedRoutes redirectTo={'/'} />}>
+          <Route path="/Home" element={<Home />} />
+        </Route>
+      </Routes>
+
+    </fileContext.Provider>
   );
 }
 
