@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import fileContext from "./context/fileContext";
@@ -11,13 +11,15 @@ import RouterProp from "./types/routerProp";
 
 function ProtectedRoutes({ redirectTo }: RouterProp) {
 
-  const isAuthenticated: boolean = true;
+  const isAuthenticated: string | null = localStorage.getItem('token');
 
   return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />
 
 }
 
 function TheRoutes() {
+
+  const navigate = useNavigate();
 
   const [errorState, setErrorState] = useState<boolean>(false);
   const [errorContent, setErrorContent] = useState<string>('');
@@ -26,7 +28,9 @@ function TheRoutes() {
 
   return (
     <fileContext.Provider value={
-      { errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState }
+      {
+        errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState, navigate
+      }
     }>
 
       <Routes>
