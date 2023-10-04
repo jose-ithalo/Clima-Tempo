@@ -2,12 +2,20 @@ import StartImg from '../../components/StartImg';
 import UserSide from '../../components/UserSide';
 import ErrorAlert from '../../components/ErrorAlert/error';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import fileContext from '../../context/fileContext';
 
 function SecondLogin() {
 
-    const { errorContent, errorState } = useContext<any>(fileContext);
+    const { errorContent, errorState, navigate } = useContext<any>(fileContext);
+
+    useEffect((): void => {
+        const token: string | null = localStorage.getItem('token');
+
+        if (token) {
+            navigate("/Home")
+        }
+    })
 
     return (
         <div className="container">
