@@ -14,6 +14,8 @@ function Home() {
 
     function handleLogout() {
 
+        localStorage.removeItem('token');
+
         navigate('/Login');
     }
 
