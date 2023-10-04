@@ -7,7 +7,7 @@ import TForm from '../../types/formType';
 import HookForm from '../../types/hookForm';
 import AxiosResponse from '../../types/axiosResponse';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
 import api from '../../services/apiBase';
@@ -18,9 +18,7 @@ import fileContext from '../../context/fileContext';
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
 
-    const { setErrorContent, setErrorState, setSuccessState } = useContext<any>(fileContext);
-
-    const navigate = useNavigate();
+    const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
 
@@ -69,7 +67,9 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
                     password: data.password
                 });
 
-                console.log(response);
+                const { access_token } = response.data;
+
+                localStorage.setItem('token', access_token);
 
                 navigate('/Home');
             } catch (error) {
