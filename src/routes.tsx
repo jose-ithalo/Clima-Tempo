@@ -26,10 +26,13 @@ function TheRoutes() {
 
   const [successState, setSuccessState] = useState<boolean>(false);
 
+  const [modalState, setModalState] = useState<boolean>(false);
+
   return (
     <fileContext.Provider value={
       {
-        errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState, navigate
+        errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState,
+        modalState, setModalState, navigate
       }
     }>
 
