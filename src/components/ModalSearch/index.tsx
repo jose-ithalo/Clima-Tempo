@@ -1,8 +1,11 @@
 import './modal.css';
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useContext } from 'react';
+import fileContext from '../../context/fileContext';
 
 function ModalSearch() {
+
+    const { setModalState } = useContext<any>(fileContext);
 
     const [inputValue, setInputValue] = useState<string>('');
 
@@ -20,7 +23,7 @@ function ModalSearch() {
 
     return (
         <div className="modalSearch">
-            <i className="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark" onClick={() => setModalState(false)}></i>
             <h2>Pesquise o clima de uma cidade:</h2>
             <form onSubmit={(evt) => handleSearch(evt)} className='formSearch'>
                 <input type="search" placeholder='Digite o nome da cidade' onChange={setValue} />
