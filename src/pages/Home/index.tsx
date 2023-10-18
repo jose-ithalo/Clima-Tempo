@@ -7,22 +7,19 @@ import plus from '../../assets/plus.svg';
 
 import CardWeather from '../../components/CardWeather';
 import ModalSearch from '../../components/ModalSearch';
-import { useNavigate } from 'react-router-dom';
+
+import { useContext } from 'react';
+import fileContext from '../../context/fileContext';
 
 function Home() {
 
-    const navigate = useNavigate();
+    const { modalState, setModalState, navigate } = useContext<any>(fileContext);
 
     function handleLogout(): void {
 
         localStorage.removeItem('token');
 
         navigate('/Login');
-    }
-
-    function searchCity(): void {
-        console.log(process.env.REACT_APP_API_KEY);
-
     }
 
     return (
@@ -55,7 +52,7 @@ function Home() {
                     <section className='fieldOption'>
                         <div className='upperContent'>
                             <h3>Temperaturas</h3>
-                            <button className='addButton' onClick={searchCity}>
+                            <button className='addButton' onClick={() => setModalState(true)}>
                                 <img src={plus} alt="Sinal de mais" />
                                 Adicionar cidade
                             </button>
@@ -72,7 +69,7 @@ function Home() {
                     </section>
                 </main>
             </div>
-            <ModalSearch />
+            {modalState && <ModalSearch />}
         </div>
     );
 }
