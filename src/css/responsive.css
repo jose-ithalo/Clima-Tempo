@@ -13,6 +13,30 @@
     }
 }
 
+@media (max-height: 520px) {
+
+    .formSearch {
+        margin-top: 5px;
+    }
+
+    .modalSearch h2 {
+        font-size: 20px;
+    }
+
+    .weatherData {
+        margin-top: 20px;
+        padding-top: 5px;
+    }
+
+    .weatherError {
+        top: 35px;
+    }
+
+    .weatherStatus {
+        margin-top: 0px;
+    }
+}
+
 @media (max-width: 580px) {
 
     .addButton {
@@ -60,6 +84,10 @@
 
     main {
         padding: 15px 8px 0 8px;
+    }
+
+    .modalSearch {
+        width: 80%;
     }
 
     .sideBar {
