@@ -75,6 +75,7 @@
     align-items: center;
     flex-direction: row;
     margin-top: 20px;
+    position: relative;
     width: 60%;
 }
 
@@ -102,11 +103,17 @@
     width: 90%;
 }
 
+.weatherError {
+    position: absolute;
+    top: 40px
+}
+
 .weatherStatus {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     font-size: 20px;
 
     margin-top: 15px;
+    padding: 0 5%;
 }
