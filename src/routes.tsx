@@ -8,6 +8,7 @@ import SecondLogin from "./pages/Login/second";
 import Home from "./pages/Home";
 
 import RouterProp from "./types/routerProp";
+import Weather from "./types/weather";
 
 function ProtectedRoutes({ redirectTo }: RouterProp) {
 
@@ -28,11 +29,18 @@ function TheRoutes() {
 
   const [modalState, setModalState] = useState<boolean>(false);
 
+  const [weatherData, setWeatherData] = useState<Weather>({
+    city: '',
+    url_country: '',
+    temp: 0,
+    humidity: 0
+  });
+
   return (
     <fileContext.Provider value={
       {
         errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState,
-        modalState, setModalState, navigate
+        modalState, setModalState, weatherData, setWeatherData, navigate
       }
     }>
 
