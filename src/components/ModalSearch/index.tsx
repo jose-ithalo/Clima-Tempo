@@ -12,6 +12,7 @@ function ModalSearch() {
     const { setModalState, weatherData, setWeatherData } = useContext<any>(fileContext);
 
     const [inputValue, setInputValue] = useState<string>('');
+    const [weatherError, setWeatherError] = useState<string>('');
 
     const urlFlag: string = 'https://flagsapi.com/' + weatherData.url_country + '/flat/64.png'
 
@@ -20,7 +21,11 @@ function ModalSearch() {
         evt.preventDefault();
 
         if (!inputValue) {
-            console.log('Escolha um cidade');
+            setWeatherError('Escolha um cidade');
+
+            setTimeout(() => {
+                setWeatherError('');
+            }, 4000);
             return
         }
 
@@ -42,8 +47,11 @@ function ModalSearch() {
             console.log(data);
 
         } catch (error) {
-            console.log(error);
+            setWeatherError('Local não encontrado');
 
+            setTimeout(() => {
+                setWeatherError('');
+            }, 4000);
         }
     }
 
@@ -62,6 +70,7 @@ function ModalSearch() {
                 <button className='btnSearch'>
                     <i className='fa-solid fa-magnifying-glass'></i>
                 </button>
+                {weatherError && <p className='weatherError'>{weatherError}</p>}
             </form>
             <div className="weatherData">
                 <div className='cityInfo'>
@@ -75,13 +84,16 @@ function ModalSearch() {
                     {weatherData.url_country && <img src={urlFlag} alt="Bandeira do País" />}
                 </div>
 
-                <div className="weatherStatus">
-                    <p><span>{weatherData.temp}</span>&deg;C</p>
-                    <p>
-                        <i className='fa-solid fa-droplet'></i>
-                        <span>{weatherData.humidity}%</span>
-                    </p>
-                </div>
+                {
+                    weatherData.temp !== 0 &&
+                    <div className="weatherStatus">
+                        <p><span>{weatherData.temp}</span>&deg;C</p>
+                        <p>
+                            <i className='fa-solid fa-droplet'></i>
+                            <span>{weatherData.humidity}%</span>
+                        </p>
+                    </div>
+                }
             </div>
         </div>
     )
