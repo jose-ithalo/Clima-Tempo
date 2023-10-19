@@ -14,6 +14,7 @@ import api from '../../services/apiBase';
 
 import { useContext } from 'react';
 import fileContext from '../../context/fileContext';
+import { keyboardKey } from '@testing-library/user-event';
 
 
 function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
@@ -22,7 +23,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
 
-    async function onSubmit(data: HookForm) {
+    async function onSubmit(data: HookForm): Promise<void> {
 
         if (btnAction === 'Registrar') {
 
@@ -90,6 +91,12 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
         }
     }
 
+    function inputSubmit(evt: keyboardKey): void {
+        if (evt.code === 'Enter' || evt.code === 'NumpadEnter') {
+            handleSubmit(onSubmit)();
+        }
+    }
+
     return (
         <div className='userArea'>
             <h1 className='firstTitle hiddenTitle'>ClimaTempo</h1>
@@ -98,7 +105,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
                 {
                     inputName &&
                     <div className="formGroup">
-                        <input type='text' placeholder='Nome completo'
+                        <input type='text' placeholder='Nome completo' onKeyUp={inputSubmit}
                             {...register('userName', { required: true })} />
                         <img src={userIcon} alt="Ícone usuário" className='iconInput' />
                     </div>
@@ -106,7 +113,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
                 {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
 
                 <div className='formGroup'>
-                    <input type='email' placeholder='Email'
+                    <input type='email' placeholder='Email' onKeyUp={inputSubmit}
                         {...register('email', {
                             required: true,
                             validate: (value) => validator.isEmail(value)
@@ -118,7 +125,7 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
 
 
                 <div className='formGroup'>
-                    <input type='password' placeholder='Senha'
+                    <input type='password' placeholder='Senha' onKeyUp={inputSubmit}
                         {...register('password', { required: true, minLength: 5 })} />
                     <img src={padlock} alt="padlock" className='iconInput' />
                 </div>
