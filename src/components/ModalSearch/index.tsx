@@ -13,6 +13,7 @@ function ModalSearch() {
 
     const [inputValue, setInputValue] = useState<string>('');
     const [weatherError, setWeatherError] = useState<string>('');
+    const [disabledState, setDisabledState] = useState<boolean>(true);
 
     const urlFlag: string = 'https://flagsapi.com/' + weatherData.url_country + '/flat/64.png'
 
@@ -43,11 +44,11 @@ function ModalSearch() {
             localData.url_country = data.sys.country;
 
             setWeatherData(localData);
-
-            console.log(data);
+            setDisabledState(false);
 
         } catch (error) {
             setWeatherError('Local não encontrado');
+            setDisabledState(true);
 
             setTimeout(() => {
                 setWeatherError('');
@@ -61,15 +62,35 @@ function ModalSearch() {
         setInputValue(value);
     }
 
+    function addCity() {
+        if (!inputValue) {
+            setWeatherError('Escolha um cidade');
+
+            setTimeout(() => {
+                setWeatherError('');
+            }, 4000);
+            return
+        }
+
+        setDisabledState(true);
+        console.log('Cidade adicionada');
+    }
+
     return (
         <div className="modalSearch">
             <i className="fa-solid fa-xmark" onClick={() => setModalState(false)}></i>
             <h2>Pesquise o clima de uma cidade:</h2>
             <form onSubmit={(evt) => handleSearch(evt)} className='formSearch'>
                 <input type="search" placeholder='Cidade' onChange={setValue} />
-                <button className='btnSearch'>
-                    <i className='fa-solid fa-magnifying-glass'></i>
-                </button>
+                <div className='buttons'>
+                    <button className='btnAction' title='Pesquisar Cidade'>
+                        <i className='fa-solid fa-magnifying-glass'></i>
+                    </button>
+                    <button className='btnAction' title='Adicionar Cidade' type='button'
+                        onClick={addCity} disabled={disabledState}>
+                        <i className="fa-solid fa-plus"></i>
+                    </button>
+                </div>
                 {weatherError && <p className='weatherError'>{weatherError}</p>}
             </form>
             <div className="weatherData">
