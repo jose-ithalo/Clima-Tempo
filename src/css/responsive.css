@@ -8,8 +8,17 @@
         font-size: 30px;
     }
 
+    .formSearch {
+        flex-direction: column;
+    }
+
     .userArea {
         padding: 0 20px;
+    }
+
+    .weatherError {
+        color: #ee3232;
+        font-weight: bold;
     }
 }
 
@@ -41,6 +50,10 @@
 
     .addButton {
         margin-top: 25px;
+    }
+
+    .cityInfo {
+        font-size: 18px;
     }
 
     .fieldDetail h3 {
