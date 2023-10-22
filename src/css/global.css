@@ -57,6 +57,26 @@ code {
   text-align: center;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #c8c8c8;
+  border: 5px solid #fff;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #574848;
+  border: 2px solid #c8c8c8;
+  border-radius: 50%;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #070752;
+  border: 2px solid #c8c8c8;
+  border-radius: 15px;
+}
+
+
 @keyframes goDown {
   from {
     top: 0
