@@ -37,6 +37,8 @@ function ModalSearch() {
 
             const { data } = response;
 
+            console.log(data);
+
             const localData: Weather = { ...weatherData };
             localData.city = data.name;
             localData.temp = parseInt(data.main.temp);
