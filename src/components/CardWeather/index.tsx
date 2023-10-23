@@ -18,7 +18,7 @@ function CardWeather() {
                 <h1 className='cityCard'>São Paulo</h1>
                 <span className='countryCard'>Brazil</span>
                 <img src={clound} alt='Nuvem' />
-                <h2 className='tempCard'>19°</h2>
+                <h2 className='tempCard'><span>19</span>&deg;</h2>
                 <div className='bottomCard'>
                     <img src={glyph} alt='Glifo' />
                     <h4>95%</h4>
