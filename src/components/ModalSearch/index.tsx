@@ -1,6 +1,6 @@
 import './modal.css';
 
-import api from '../../services/apiClima';
+import api from '../../services/apiWeather';
 
 import { ChangeEvent, FormEvent, useState, useContext } from 'react';
 import fileContext from '../../context/fileContext';
