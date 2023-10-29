@@ -8,12 +8,32 @@ import plus from '../../assets/plus.svg';
 import CardWeather from '../../components/CardWeather';
 import ModalSearch from '../../components/ModalSearch';
 
-import { useContext } from 'react';
+import api from '../../services/apiBase';
+
+import { useContext, useEffect, useState } from 'react';
 import fileContext from '../../context/fileContext';
 
 function Home() {
 
     const { modalState, setModalState, navigate } = useContext<any>(fileContext);
+
+    const [cityList, setCityList] = useState<string[]>([]);
+
+    async function showCities(): Promise<void> {
+
+        try {
+            const token: string | null = localStorage.getItem('token');
+            const response = await api.get('/users/cities', {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            });
+
+            setCityList(response.data);
+        } catch (error) {
+            console.log('erro!');
+        }
+    }
 
     function handleLogout(): void {
 
@@ -21,6 +41,11 @@ function Home() {
 
         navigate('/Login');
     }
+
+    useEffect(() => {
+        showCities();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="containerHome">
@@ -58,13 +83,9 @@ function Home() {
                             </button>
                         </div>
                         <div className='weatherReports'>
-                            <CardWeather />
-                            <CardWeather />
-                            <CardWeather />
-                            <CardWeather />
-                            <CardWeather />
-                            <CardWeather />
-
+                            {cityList.map((city, index) => (
+                                <CardWeather key={index} cityName={city} />
+                            ))}
                         </div>
                     </section>
                 </main>
