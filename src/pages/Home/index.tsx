@@ -7,6 +7,7 @@ import plus from '../../assets/plus.svg';
 
 import CardWeather from '../../components/CardWeather';
 import ModalSearch from '../../components/ModalSearch';
+import ErrorAlert from '../../components/ErrorAlert/error';
 
 import api from '../../services/apiBase';
 
@@ -15,7 +16,7 @@ import fileContext from '../../context/fileContext';
 
 function Home() {
 
-    const { modalState, setModalState, navigate } = useContext<any>(fileContext);
+    const { modalState, setModalState, errorState, navigate } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
 
@@ -91,6 +92,7 @@ function Home() {
                 </main>
             </div>
             {modalState && <ModalSearch />}
+            {errorState && <ErrorAlert content='Erro ao carregar dados da cidade' />}
         </div>
     );
 }
