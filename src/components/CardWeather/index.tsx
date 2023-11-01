@@ -12,6 +12,7 @@ import apiWeather from '../../services/apiWeather';
 import fileContext from '../../context/fileContext';
 
 import { useContext, useEffect, useState } from 'react';
+import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
@@ -19,6 +20,7 @@ function CardWeather({ cityName }: CityProp) {
 
     const [delState, setDelState] = useState<boolean>(false);
 
+    const [countryName, setCountryName] = useState<string>('');
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
 
@@ -29,6 +31,10 @@ function CardWeather({ cityName }: CityProp) {
             const response = await apiWeather.get(`${urlApi}`);
 
             const { data } = response;
+
+            const country = Country.getCountryByCode(data.sys.country);
+
+            setCountryName(country!.name);
 
             setTemp(parseInt(data.main.temp));
             setHumidity(data.main.humidity);
@@ -51,7 +57,7 @@ function CardWeather({ cityName }: CityProp) {
         <div className='cardContainer' onMouseEnter={() => setDelState(true)} onMouseLeave={() => setDelState(false)}>
             <div className="card" >
                 <h1 className='cityCard'>{cityName}</h1>
-                <span className='countryCard'>Brazil</span>
+                <span className='countryCard'>{countryName}</span>
                 <img src={clound} alt='Nuvem' />
                 <h2 className='tempCard'><span>{temp}</span>&deg;</h2>
                 <div className='bottomCard'>
