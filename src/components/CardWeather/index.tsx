@@ -4,13 +4,18 @@ import clound from '../../assets/cloud.svg';
 import glyph from '../../assets/glyph.svg';
 
 import DelButton from '../../components/DelButton/button';
+
 import CityProp from '../../types/cityProp';
 
 import apiWeather from '../../services/apiWeather';
 
-import { useEffect, useState } from 'react';
+import fileContext from '../../context/fileContext';
+
+import { useContext, useEffect, useState } from 'react';
 
 function CardWeather({ cityName }: CityProp) {
+
+    const { setErrorState } = useContext<any>(fileContext);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -29,7 +34,10 @@ function CardWeather({ cityName }: CityProp) {
             setHumidity(data.main.humidity);
 
         } catch (error) {
-            console.log('Deu erro');
+            setErrorState(true);
+            setTimeout((): void => {
+                setErrorState(false);
+            }, 5000);
 
         }
     }
