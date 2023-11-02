@@ -1,6 +1,5 @@
 import './card.css';
 
-import clound from '../../assets/cloud.svg';
 import glyph from '../../assets/glyph.svg';
 
 import DelButton from '../../components/DelButton/button';
@@ -21,8 +20,11 @@ function CardWeather({ cityName }: CityProp) {
     const [delState, setDelState] = useState<boolean>(false);
 
     const [countryName, setCountryName] = useState<string>('');
+    const [icon, setIcon] = useState<string>('');
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
+
+    const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png'
 
     async function showInfo(): Promise<void> {
         const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=pt_br`;
@@ -35,7 +37,7 @@ function CardWeather({ cityName }: CityProp) {
             const country = Country.getCountryByCode(data.sys.country);
 
             setCountryName(country!.name);
-
+            setIcon(data.weather[0].icon);
             setTemp(parseInt(data.main.temp));
             setHumidity(data.main.humidity);
 
@@ -58,7 +60,7 @@ function CardWeather({ cityName }: CityProp) {
             <div className="card" >
                 <h1 className='cityCard'>{cityName}</h1>
                 <span className='countryCard'>{countryName}</span>
-                <img src={clound} alt='Nuvem' />
+                <img src={urlIcon} alt='Ícone de tempo' />
                 <h2 className='tempCard'><span>{temp}</span>&deg;</h2>
                 <div className='bottomCard'>
                     <img src={glyph} alt='Glifo' />
