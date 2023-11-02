@@ -24,7 +24,7 @@ function CardWeather({ cityName }: CityProp) {
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
 
-    const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png'
+    const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png';
 
     async function showInfo(): Promise<void> {
         const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=pt_br`;
