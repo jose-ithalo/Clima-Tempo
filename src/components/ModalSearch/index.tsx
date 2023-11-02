@@ -15,7 +15,7 @@ function ModalSearch() {
     const [weatherError, setWeatherError] = useState<string>('');
     const [disabledState, setDisabledState] = useState<boolean>(true);
 
-    const urlFlag: string = 'https://flagsapi.com/' + weatherData.url_country + '/flat/64.png'
+    const urlFlag: string = 'https://flagsapi.com/' + weatherData.code + '/flat/64.png'
 
 
     async function handleSearch(evt: FormEvent) {
@@ -43,7 +43,7 @@ function ModalSearch() {
             localData.city = data.name;
             localData.temp = parseInt(data.main.temp);
             localData.humidity = data.main.humidity;
-            localData.url_country = data.sys.country;
+            localData.code = data.sys.country;
 
             setWeatherData(localData);
             setDisabledState(false);
@@ -104,7 +104,7 @@ function ModalSearch() {
                             <span>{weatherData.city}</span>
                         </div>
                     }
-                    {weatherData.url_country && <img src={urlFlag} alt="Bandeira do País" />}
+                    {weatherData.code && <img src={urlFlag} alt="Bandeira do País" />}
                 </div>
 
                 {

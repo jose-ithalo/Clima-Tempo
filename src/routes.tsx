@@ -31,7 +31,7 @@ function TheRoutes() {
 
   const [weatherData, setWeatherData] = useState<Weather>({
     city: '',
-    url_country: '',
+    code: '',
     temp: 0,
     humidity: 0
   });

@@ -1,6 +1,6 @@
 type Weather = {
     city: string,
-    url_country: string,
+    code: string,
     temp: number,
     humidity: number
 }
