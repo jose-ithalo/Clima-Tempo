@@ -1,5 +1,6 @@
 import './modal.css';
 
+import apiBase from '../../services/apiBase';
 import apiWeather from '../../services/apiWeather';
 
 import { ChangeEvent, FormEvent, useState, useContext } from 'react';
@@ -64,7 +65,7 @@ function ModalSearch() {
         setInputValue(value);
     }
 
-    function addCity() {
+    async function addCity() {
         if (!inputValue) {
             setWeatherError('Escolha um cidade');
 
@@ -72,6 +73,23 @@ function ModalSearch() {
                 setWeatherError('');
             }, 4000);
             return
+        }
+
+        try {
+            const token: string | null = localStorage.getItem('token');
+            await apiBase.patch('/users/cities', {
+                city: inputValue
+            },
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+        } catch (error) {
+            console.log(error);
+
         }
 
         setDisabledState(true);
