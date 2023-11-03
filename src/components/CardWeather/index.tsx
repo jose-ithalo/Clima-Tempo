@@ -20,7 +20,7 @@ function CardWeather({ cityName }: CityProp) {
     const [delState, setDelState] = useState<boolean>(false);
 
     const [countryName, setCountryName] = useState<string>('');
-    const [icon, setIcon] = useState<string>('');
+    const [icon, setIcon] = useState<string>('01d');
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
 
