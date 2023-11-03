@@ -1,6 +1,6 @@
 import './modal.css';
 
-import api from '../../services/apiWeather';
+import apiWeather from '../../services/apiWeather';
 
 import { ChangeEvent, FormEvent, useState, useContext } from 'react';
 import fileContext from '../../context/fileContext';
@@ -33,7 +33,7 @@ function ModalSearch() {
         const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=${process.env.REACT_APP_API_KEY}&lang=pt_br`;
 
         try {
-            const response = await api.get(`${urlApi}`);
+            const response = await apiWeather.get(`${urlApi}`);
 
             const { data } = response;
 
@@ -78,9 +78,21 @@ function ModalSearch() {
         console.log('Cidade adicionada');
     }
 
+    function closeModal() {
+        setModalState(false);
+
+        const localData: Weather = { ...weatherData };
+        localData.city = '';
+        localData.code = '';
+        localData.temp = 0;
+        localData.humidity = 0;
+
+        setWeatherData(localData);
+    }
+
     return (
         <div className="modalSearch">
-            <i className="fa-solid fa-xmark" onClick={() => setModalState(false)}></i>
+            <i className="fa-solid fa-xmark" onClick={closeModal}></i>
             <h2>Pesquise o clima de uma cidade:</h2>
             <form onSubmit={(evt) => handleSearch(evt)} className='formSearch'>
                 <input type="search" placeholder='Cidade' onChange={setValue} />
