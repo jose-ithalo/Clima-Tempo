@@ -17,7 +17,7 @@ import fileContext from '../../context/fileContext';
 
 function Home() {
 
-    const { modalState, setModalState, errorState, setErrorState, navigate } = useContext<any>(fileContext);
+    const { modalState, setModalState, errorDelete, errorState, setErrorState, navigate } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
     const [stateLoading, setStateLoading] = useState<boolean>(true);
@@ -49,7 +49,7 @@ function Home() {
         showCities();
         setTimeout(() => {
             setStateLoading(false);
-        }, 3000);
+        }, 2000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -85,6 +85,7 @@ function Home() {
                             <section className='fieldOption'>
                                 <div className='upperContent'>
                                     <h3>Temperaturas</h3>
+                                    {errorDelete && <p className='deleteError'>Erro na exclusão</p>}
                                     <button className='addButton' onClick={() => setModalState(true)}>
                                         <img src={plus} alt="Sinal de mais" />
                                         Adicionar cidade
