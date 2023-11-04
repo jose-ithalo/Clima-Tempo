@@ -22,6 +22,7 @@ function TheRoutes() {
 
   const navigate = useNavigate();
 
+  const [errorDelete, setErrorDelete] = useState<boolean>(false);
   const [errorState, setErrorState] = useState<boolean>(false);
   const [errorContent, setErrorContent] = useState<string>('');
 
@@ -40,7 +41,8 @@ function TheRoutes() {
     <fileContext.Provider value={
       {
         errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState,
-        modalState, setModalState, weatherData, setWeatherData, navigate
+        modalState, setModalState, weatherData, setWeatherData, errorDelete, setErrorDelete,
+        navigate
       }
     }>
 
