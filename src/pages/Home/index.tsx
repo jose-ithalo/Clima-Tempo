@@ -17,7 +17,7 @@ import fileContext from '../../context/fileContext';
 
 function Home() {
 
-    const { modalState, setModalState, errorState, navigate } = useContext<any>(fileContext);
+    const { modalState, setModalState, errorState, setErrorState, navigate } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
     const [stateLoading, setStateLoading] = useState<boolean>(true);
@@ -34,7 +34,7 @@ function Home() {
 
             setCityList(response.data);
         } catch (error) {
-            console.log('erro!');
+            setErrorState(true);
         }
     }
 
