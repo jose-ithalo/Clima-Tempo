@@ -6,6 +6,7 @@ import apiWeather from '../../services/apiWeather';
 import { ChangeEvent, FormEvent, useState, useContext } from 'react';
 import fileContext from '../../context/fileContext';
 
+import AxiosResponse from '../../types/axiosResponse';
 import Weather from '../../types/weather';
 
 function ModalSearch() {
@@ -87,13 +88,24 @@ function ModalSearch() {
                 }
             );
 
-        } catch (error) {
-            console.log(error);
+            window.location.reload();
 
+        } catch (error) {
+            if (error !== null && typeof error === 'object'
+                && 'response' in error && typeof error.response === 'object') {
+
+                const { data } = error.response as AxiosResponse;
+
+                if ('message' in data && typeof data.message === 'string') {
+                    setWeatherError(data.message);
+                    setTimeout(() => {
+                        setWeatherError('');
+                    }, 4000);
+                }
+            }
         }
 
         setDisabledState(true);
-        console.log('Cidade adicionada');
     }
 
     function closeModal() {
