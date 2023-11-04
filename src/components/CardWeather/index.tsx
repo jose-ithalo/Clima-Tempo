@@ -69,7 +69,7 @@ function CardWeather({ cityName }: CityProp) {
                 </div>
 
             </div>
-            {delState && <DelButton />}
+            {delState && <DelButton cityName={cityName} />}
         </div>
 
     );
