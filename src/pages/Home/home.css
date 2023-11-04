@@ -35,6 +35,11 @@
     width: calc(100% - 8.5%);
 }
 
+.deleteError {
+    color: #b82121;
+    font-weight: bold;
+}
+
 .fieldDetail {
     background: url('../../assets/weather.png'), lightgray 50%;
     background-position: center;
