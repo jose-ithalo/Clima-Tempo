@@ -1,0 +1,52 @@
+.modalDetach {
+    background-color: #5c54ede6;
+    border-radius: 10px;
+    color: #fdfdfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-family: 'Source Sans 3', sans-serif;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 70%;
+    min-width: 300px;
+    width: 30%;
+}
+
+.btnDelete {
+    color: #f05252;
+}
+
+.btnDetach {
+    color: #6262e7;
+}
+
+.detachSection {
+    all: unset;
+    border-bottom: 2px solid #fff;
+    border-radius: 2px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.modalDetach button {
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.modalDetach section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
