@@ -7,6 +7,7 @@ import plus from '../../assets/plus.svg';
 
 import CardWeather from '../../components/CardWeather';
 import ModalSearch from '../../components/ModalSearch';
+import ModalDetach from '../../components/ModalDetach';
 import ErrorAlert from '../../components/ErrorAlert/error';
 import Loading from '../../components/Loading/loading';
 
@@ -103,7 +104,7 @@ function Home() {
                     {errorState && <ErrorAlert content='Erro ao carregar dados da cidade' />}
                 </>
             }
-
+            <ModalDetach />
         </div>
     );
 }
