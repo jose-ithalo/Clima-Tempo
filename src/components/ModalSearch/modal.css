@@ -66,19 +66,6 @@
     margin-right: 5px;
 }
 
-.fa-xmark {
-    cursor: pointer;
-    font-size: 25px;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-
-    &:active {
-        transform: scale(1.2);
-    }
-
-}
-
 .formSearch {
     display: flex;
     align-items: center;

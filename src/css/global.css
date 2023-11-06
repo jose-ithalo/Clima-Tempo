@@ -28,14 +28,27 @@ code {
   width: 100%;
 }
 
-.hiddenTitle {
-  display: none;
+.fa-xmark {
+  cursor: pointer;
+  font-size: 25px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+
+  &:active {
+    transform: scale(1.2);
+  }
+
 }
 
 .firstTitle {
   color: rgba(255, 255, 255, 1);
   font-family: 'Poppins', sans-serif;
   font-size: 40px;
+}
+
+.hiddenTitle {
+  display: none;
 }
 
 .popupAlert {
