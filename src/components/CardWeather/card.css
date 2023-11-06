@@ -15,9 +15,15 @@
     margin: 0 0 50px 30px;
     padding: 18px;
 
+    transition: all 0.4s;
+
     height: 336px;
     width: 180px;
 
+}
+
+.card:active {
+    transform: scale(0.9);
 }
 
 .bottomCard {
