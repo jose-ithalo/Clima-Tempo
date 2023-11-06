@@ -50,13 +50,21 @@ function CardWeather({ cityName }: CityProp) {
         }
     }
 
+    function showModal() {
+        console.log('Mostrar modal');
+    }
+
     useEffect(() => {
         showInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div className='cardContainer' onMouseEnter={() => setDelState(true)} onMouseLeave={() => setDelState(false)}>
+        <div className='cardContainer'
+            onMouseEnter={() => setDelState(true)}
+            onMouseLeave={() => setDelState(false)}
+            onClick={showModal}
+        >
             <div className="card" >
                 <h1 className='cityCard'>{cityName}</h1>
                 <span className='countryCard'>{countryName}</span>
