@@ -12,6 +12,10 @@
         flex-direction: column;
     }
 
+    .modalDetach {
+        min-width: 250px;
+    }
+
     .userArea {
         padding: 0 20px;
     }
@@ -24,8 +28,16 @@
 
 @media (max-height: 520px) {
 
+    .detachSection {
+        margin-bottom: 5px;
+    }
+
     .formSearch {
         margin-top: 5px;
+    }
+
+    .modalDetach h2 {
+        font-size: 18px;
     }
 
     .modalSearch h2 {
@@ -116,6 +128,12 @@
         align-items: center;
         justify-content: center;
         margin: 40px 40px 0 0;
+    }
+}
+
+@media (max-width: 1000px) {
+    .modalDetach {
+        width: 60%;
     }
 }
 
