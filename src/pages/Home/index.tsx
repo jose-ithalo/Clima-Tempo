@@ -36,6 +36,11 @@ function Home() {
             setCityList(response.data);
         } catch (error) {
             setErrorState(true);
+
+            setTimeout(() => {
+                setErrorState(false);
+                localStorage.removeItem('token')
+            }, 3000);
         }
     }
 
