@@ -18,7 +18,10 @@ import fileContext from '../../context/fileContext';
 
 function Home() {
 
-    const { modalState, setModalState, errorDelete, errorState, setErrorState, navigate } = useContext<any>(fileContext);
+    const {
+        modalState, setModalState, errorDelete, errorState,
+        setErrorState, navigate, detachState
+    } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
     const [stateLoading, setStateLoading] = useState<boolean>(true);
@@ -109,7 +112,7 @@ function Home() {
                     {errorState && <ErrorAlert content='Erro ao carregar dados da cidade' />}
                 </>
             }
-            <ModalDetach />
+            {detachState && <ModalDetach />}
         </div>
     );
 }
