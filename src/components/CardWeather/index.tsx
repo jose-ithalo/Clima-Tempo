@@ -15,7 +15,7 @@ import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
-    const { setErrorState } = useContext<any>(fileContext);
+    const { setErrorState, setModalState, setDetachState } = useContext<any>(fileContext);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -51,7 +51,8 @@ function CardWeather({ cityName }: CityProp) {
     }
 
     function showModal() {
-        console.log('Mostrar modal');
+        setDetachState(true);
+        setModalState(false);
     }
 
     useEffect(() => {
