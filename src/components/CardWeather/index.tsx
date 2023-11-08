@@ -15,7 +15,7 @@ import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
-    const { setErrorState, setModalState, setDetachState } = useContext<any>(fileContext);
+    const { setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -53,6 +53,7 @@ function CardWeather({ cityName }: CityProp) {
     function showModal() {
         setDetachState(true);
         setModalState(false);
+        setChosenCity(cityName);
     }
 
     useEffect(() => {
@@ -63,10 +64,8 @@ function CardWeather({ cityName }: CityProp) {
     return (
         <div className='cardContainer'
             onMouseEnter={() => setDelState(true)}
-            onMouseLeave={() => setDelState(false)}
-            onClick={showModal}
-        >
-            <div className="card" >
+            onMouseLeave={() => setDelState(false)}>
+            <div className="card" onClick={showModal}>
                 <h1 className='cityCard'>{cityName}</h1>
                 <span className='countryCard'>{countryName}</span>
                 <img src={urlIcon} alt='Ícone de tempo' />
