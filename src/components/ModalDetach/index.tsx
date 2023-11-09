@@ -10,10 +10,33 @@ import { useContext } from 'react';
 function ModalDetach() {
 
     const { chosenCity, errorState, setErrorState, setDetachState } = useContext<any>(fileContext);
+    const token: string | null = localStorage.getItem('token');
+
+    async function detachCity() {
+        try {
+            await api.patch('/users/detach', {
+                city: chosenCity
+            },
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                }
+            );
+            window.location.reload();
+
+        } catch (error) {
+            setErrorState(true);
+
+            setTimeout(() => {
+                setErrorState(false)
+            }, 3000);
+
+        }
+    }
 
     async function removeCity() {
         try {
-            const token: string | null = localStorage.getItem('token');
             await api.delete('/users/cities', {
                 headers: {
                     authorization: `Bearer ${token}`
@@ -40,14 +63,14 @@ function ModalDetach() {
                 <i className="fa-solid fa-xmark" onClick={() => setDetachState(false)}></i>
                 <section className='detachSection'>
                     <h2>Deseja destacar essa cidade ?</h2>
-                    <button className='btnDetach'>Destacar</button>
+                    <button className='btnDetach' onClick={detachCity}>Destacar</button>
                 </section>
                 <section>
                     <h2>Deseja excluir essa cidade ?</h2>
                     <button className='btnDelete' onClick={removeCity}>Excluir</button>
                 </section>
             </div>
-            {errorState && <ErrorAlert content='Erro ao remover cidade' />}
+            {errorState && <ErrorAlert content='Erro de execução' />}
         </div>
     )
 }
