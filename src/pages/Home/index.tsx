@@ -5,9 +5,10 @@ import avatar from '../../assets/avatar.svg';
 import cloud from '../../assets/cloud.svg';
 import plus from '../../assets/plus.svg';
 
+import DetachField from '../../components/DetachField/detach';
 import CardWeather from '../../components/CardWeather';
-import ModalSearch from '../../components/ModalSearch';
-import ModalDetach from '../../components/ModalDetach';
+import ModalSearch from '../../components/ModalSearch/modal';
+import ModalDetach from '../../components/ModalDetach/modal';
 import ErrorAlert from '../../components/ErrorAlert/error';
 import Loading from '../../components/Loading/loading';
 
@@ -93,6 +94,7 @@ function Home() {
                             </section>
                             <section className='fieldOption'>
                                 <div className='upperContent'>
+                                    <DetachField />
                                     <h3>Temperaturas</h3>
                                     {errorDelete && <p className='deleteError'>Erro na exclusão</p>}
                                     <button className='addButton' onClick={() => setModalState(true)}>

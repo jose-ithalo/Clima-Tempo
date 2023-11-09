@@ -1,4 +1,4 @@
-import StartImg from '../../components/StartImg';
+import StartImg from '../../components/StartImg/startImg';
 import UserSide from '../../components/UserSide';
 import ErrorAlert from '../../components/ErrorAlert/error';
 
