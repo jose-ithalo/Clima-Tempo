@@ -1,6 +1,6 @@
 @media (max-width: 480px) {
 
-    .fieldDetail {
+    .fieldDetach {
         align-items: flex-start;
     }
 
@@ -68,7 +68,7 @@
         font-size: 18px;
     }
 
-    .fieldDetail h3 {
+    .fieldDetach h3 {
         font-size: 20px;
     }
 
@@ -95,7 +95,7 @@
         width: 100%;
     }
 
-    .fieldDetail {
+    .fieldDetach {
         padding: 20px 4%;
     }
 
