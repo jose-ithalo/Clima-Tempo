@@ -1,0 +1,37 @@
+.fieldDetach {
+    background: url('../../assets/weather.png'), lightgray 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    color: #FFF;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    font-family: 'Source Sans 3', sans-serif;
+    padding: 40px 85px;
+    height: 52%;
+}
+
+.leftDetails h1 {
+    font-size: 112px;
+    font-weight: 300;
+
+    margin-bottom: -30px;
+}
+
+.fieldDetach h2 {
+    font-size: 32px;
+}
+
+.fieldDetach h3 {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.leftDetails h4 {
+    font-size: 18px;
+    font-weight: 400;
+}
