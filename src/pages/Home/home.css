@@ -40,44 +40,6 @@
     font-weight: bold;
 }
 
-.fieldDetail {
-    background: url('../../assets/weather.png'), lightgray 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 8px;
-    color: #FFF;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-
-    font-family: 'Source Sans 3', sans-serif;
-    padding: 40px 85px;
-    height: 52%;
-}
-
-.fieldDetail h1 {
-    font-size: 112px;
-    font-weight: 300;
-
-    margin-bottom: -30px;
-}
-
-.fieldDetail h2 {
-    font-size: 32px;
-}
-
-.fieldDetail h3 {
-    font-size: 28px;
-    font-weight: 400;
-}
-
-.fieldDetail h4 {
-    font-size: 18px;
-    font-weight: 400;
-}
-
 .fieldOption {
     font-family: 'Roboto', sans-serif;
     margin-top: 85px;
