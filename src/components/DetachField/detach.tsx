@@ -2,7 +2,32 @@ import './detach.css';
 
 import cloud from '../../assets/cloud.svg';
 
+import apiBase from '../../services/apiBase';
+
+import { useEffect, useState } from 'react';
+
+
+
 function DetachField() {
+
+    const [detachedCity, setDetachedCity] = useState<string>('');
+
+    async function getDetach() {
+        const token: string | null = localStorage.getItem('token');
+
+        const response = await apiBase.get('/users/user', {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        });
+
+        setDetachedCity(response.data.detached);
+    }
+
+    useEffect(() => {
+        getDetach();
+    }, [])
+
     return (
         <div className='fieldDetach'>
             <div className='leftDetails'>
@@ -12,7 +37,7 @@ function DetachField() {
                 </div>
                 <div>
                     <h1>19°</h1>
-                    <h3>São Paulo, Brazil</h3>
+                    <h3>{detachedCity}, Brazil</h3>
                 </div>
             </div>
             <div className='rightDetails'>
