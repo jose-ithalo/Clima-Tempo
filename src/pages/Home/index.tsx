@@ -24,12 +24,13 @@ function Home() {
     } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
+    const [detachedCity, setDetachedCity] = useState<string>('');
     const [stateLoading, setStateLoading] = useState<boolean>(true);
 
-    async function showCities(): Promise<void> {
+    const token: string | null = localStorage.getItem('token');
 
+    async function showCities(): Promise<void> {
         try {
-            const token: string | null = localStorage.getItem('token');
             const response = await api.get('/users/cities', {
                 headers: {
                     authorization: `Bearer ${token}`
@@ -47,6 +48,17 @@ function Home() {
         }
     }
 
+    async function getDetach() {
+        const response = await api.get('/users/user', {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        });
+
+        setDetachedCity(response.data.detached);
+
+    }
+
     function handleLogout(): void {
 
         localStorage.removeItem('token');
@@ -56,6 +68,7 @@ function Home() {
 
     useEffect(() => {
         showCities();
+        getDetach();
         setTimeout(() => {
             setStateLoading(false);
         }, 2000);
@@ -76,7 +89,7 @@ function Home() {
                         </header>
                         <main>
                             <section>
-                                <DetachField />
+                                <DetachField cityName={detachedCity} />
                             </section>
                             <section className='fieldOption'>
                                 <div className='upperContent'>
