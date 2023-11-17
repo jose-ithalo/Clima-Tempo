@@ -68,6 +68,10 @@
         font-size: 18px;
     }
 
+    .fieldDetach {
+        height: 230px;
+    }
+
     .fieldDetach h3 {
         font-size: 20px;
     }
