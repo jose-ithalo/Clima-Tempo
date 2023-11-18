@@ -32,16 +32,12 @@ function DetachField({ cityName }: CityProp) {
 
         const country = Country.getCountryByCode(data.sys.country);
 
-        console.log(country);
-
-
         setIcon(data.weather[0].icon);
         setDescription(data.weather[0].description);
         setCountryName(country!.name);
         setTemp(parseInt(data.main.temp));
 
         setShowDetach(true);
-
     }
 
     useEffect(() => {
