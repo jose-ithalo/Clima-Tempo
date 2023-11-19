@@ -6,6 +6,7 @@ import apiWeather from '../../services/apiWeather';
 
 import { useEffect, useState } from 'react';
 import { Country } from 'country-state-city';
+import { format } from 'date-fns';
 
 function DetachField({ cityName }: CityProp) {
 
@@ -16,7 +17,23 @@ function DetachField({ cityName }: CityProp) {
     const [temp, setTemp] = useState<number>(0);
     const [countryName, setCountryName] = useState<string>('');
 
+    const [timeCity, setTimeCity] = useState<string>('');
+
     const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png';
+
+    function setMoment(timezone: number) {
+
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth();
+        const day = new Date().getUTCDate();
+        const currentHour = new Date().getUTCHours();
+        const minutes = new Date().getMinutes();
+        const localHour = currentHour + timezone;
+
+        const fullDate = new Date(year, month, day, localHour, minutes);
+
+        setTimeCity(format(fullDate, 'h:mm b'));
+    }
 
     async function getInfo() {
 
@@ -29,6 +46,10 @@ function DetachField({ cityName }: CityProp) {
         const response = await apiWeather.get(`${urlApi}`);
 
         const { data } = response;
+
+        const timezone = data.timezone / 3600;
+
+        setMoment(timezone);
 
         const country = Country.getCountryByCode(data.sys.country);
 
@@ -60,7 +81,7 @@ function DetachField({ cityName }: CityProp) {
                         </div>
                     </div>
                     <div className='rightDetails'>
-                        <h2>7:30 pm</h2>
+                        <h2>{timeCity}</h2>
                         <h3>Quarta-feira</h3>
                     </div>
                 </>
