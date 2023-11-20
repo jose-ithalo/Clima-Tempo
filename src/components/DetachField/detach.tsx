@@ -7,6 +7,7 @@ import apiWeather from '../../services/apiWeather';
 import { useEffect, useState } from 'react';
 import { Country } from 'country-state-city';
 import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 function DetachField({ cityName }: CityProp) {
 
@@ -18,6 +19,7 @@ function DetachField({ cityName }: CityProp) {
     const [countryName, setCountryName] = useState<string>('');
 
     const [timeCity, setTimeCity] = useState<string>('');
+    const [weekDay, setWeekDay] = useState<string>('');
 
     const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png';
 
@@ -33,6 +35,7 @@ function DetachField({ cityName }: CityProp) {
         const fullDate = new Date(year, month, day, localHour, minutes);
 
         setTimeCity(format(fullDate, 'h:mm b'));
+        setWeekDay(format(fullDate, 'EEEE', { locale: ptBR }));
     }
 
     async function getInfo() {
@@ -82,7 +85,7 @@ function DetachField({ cityName }: CityProp) {
                     </div>
                     <div className='rightDetails'>
                         <h2>{timeCity}</h2>
-                        <h3>Quarta-feira</h3>
+                        <h3>{weekDay}</h3>
                     </div>
                 </>
             }
