@@ -18,8 +18,11 @@ function DetachField({ cityName }: CityProp) {
     const [temp, setTemp] = useState<number>(0);
     const [countryName, setCountryName] = useState<string>('');
 
+    const [hour, setHour] = useState<number>(0);
     const [timeCity, setTimeCity] = useState<string>('');
     const [weekDay, setWeekDay] = useState<string>('');
+
+    const [hourData, setHourData] = useState<boolean>(false);
 
     const urlIcon: string = 'https://openweathermap.org/img/wn/' + icon + '.png';
 
@@ -30,11 +33,13 @@ function DetachField({ cityName }: CityProp) {
         const day = new Date().getUTCDate();
         const currentHour = new Date().getUTCHours();
         const minutes = new Date().getMinutes();
-        const localHour = currentHour + timezone;
+        const localHour: number = currentHour + timezone;
+        setHour(localHour);
+        setHourData(true);
 
         const fullDate = new Date(year, month, day, localHour, minutes);
 
-        setTimeCity(format(fullDate, 'h:mm b'));
+        setTimeCity(format(fullDate, 'h:mm a'));
         setWeekDay(format(fullDate, 'EEEE', { locale: ptBR }));
     }
 
@@ -64,10 +69,28 @@ function DetachField({ cityName }: CityProp) {
         setShowDetach(true);
     }
 
+    function timing() {
+
+        if (!hourData) {
+            return;
+        }
+
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth();
+        const day = new Date().getUTCDate();
+        const minutes = new Date().getMinutes();
+
+        const fullDate = new Date(year, month, day, hour, minutes);
+
+        setTimeCity(format(fullDate, 'h:mm a'));
+    }
+
+    setInterval(timing, 1000);
+
     useEffect(() => {
         getInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     return (
         <div className='fieldDetach'>
