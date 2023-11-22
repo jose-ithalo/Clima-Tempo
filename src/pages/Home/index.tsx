@@ -49,13 +49,22 @@ function Home() {
     }
 
     async function getDetach() {
-        const response = await api.get('/users/user', {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        });
 
-        setDetachedCity(response.data.detached);
+        try {
+            const response = await api.get('/users/user', {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            });
+
+            setDetachedCity(response.data.detached);
+
+        } catch (error) {
+            setErrorState(true);
+            console.log('Erro na função getDetach');
+
+        }
+
 
     }
 
