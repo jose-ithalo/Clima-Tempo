@@ -28,16 +28,16 @@ function DetachField({ cityName }: CityProp) {
 
     function setMoment(timezone: number) {
 
-        const year = new Date().getFullYear();
-        const month = new Date().getMonth();
-        const day = new Date().getUTCDate();
-        const currentHour = new Date().getUTCHours();
-        const minutes = new Date().getMinutes();
+        const year: number = new Date().getFullYear();
+        const month: number = new Date().getMonth();
+        const day: number = new Date().getUTCDate();
+        const currentHour: number = new Date().getUTCHours();
+        const minutes: number = new Date().getMinutes();
         const localHour: number = currentHour + timezone;
         setHour(localHour);
         setHourData(true);
 
-        const fullDate = new Date(year, month, day, localHour, minutes);
+        const fullDate: Date = new Date(year, month, day, localHour, minutes);
 
         setTimeCity(format(fullDate, 'h:mm a'));
         setWeekDay(format(fullDate, 'EEEE', { locale: ptBR }));
@@ -75,12 +75,12 @@ function DetachField({ cityName }: CityProp) {
             return;
         }
 
-        const year = new Date().getFullYear();
-        const month = new Date().getMonth();
-        const day = new Date().getUTCDate();
-        const minutes = new Date().getMinutes();
+        const year: number = new Date().getFullYear();
+        const month: number = new Date().getMonth();
+        const day: number = new Date().getUTCDate();
+        const minutes: number = new Date().getMinutes();
 
-        const fullDate = new Date(year, month, day, hour, minutes);
+        const fullDate: Date = new Date(year, month, day, hour, minutes);
 
         setTimeCity(format(fullDate, 'h:mm a'));
     }
