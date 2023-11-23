@@ -43,7 +43,7 @@ function Home() {
 
             setTimeout(() => {
                 setErrorState(false);
-                localStorage.removeItem('token')
+                localStorage.removeItem('token');
             }, 3000);
         }
     }
@@ -61,7 +61,11 @@ function Home() {
 
         } catch (error) {
             setErrorState(true);
-            console.log('Erro na função getDetach');
+
+            setTimeout(() => {
+                setErrorState(false);
+                localStorage.removeItem('token');
+            }, 3000);
 
         }
 
