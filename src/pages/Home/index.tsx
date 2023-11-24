@@ -69,7 +69,6 @@ function Home() {
 
         }
 
-
     }
 
     function handleLogout(): void {
@@ -81,7 +80,9 @@ function Home() {
 
     useEffect(() => {
         showCities();
-        getDetach();
+        setTimeout(() => {
+            getDetach();
+        }, 1000);
         setTimeout(() => {
             setStateLoading(false);
         }, 2000);
