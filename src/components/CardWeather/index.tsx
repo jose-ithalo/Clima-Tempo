@@ -10,12 +10,14 @@ import apiWeather from '../../services/apiWeather';
 
 import fileContext from '../../context/fileContext';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
     const { setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
+
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -41,6 +43,7 @@ function CardWeather({ cityName }: CityProp) {
             setTemp(parseInt(data.main.temp));
             setHumidity(data.main.humidity);
 
+
         } catch (error) {
             setErrorState(true);
             setTimeout((): void => {
@@ -65,7 +68,7 @@ function CardWeather({ cityName }: CityProp) {
         <div className='cardContainer'
             onMouseEnter={() => setDelState(true)}
             onMouseLeave={() => setDelState(false)}>
-            <div className="card" onClick={showModal}>
+            <div className="card" ref={cardRef} onClick={showModal}>
                 <h1 className='cityCard'>{cityName}</h1>
                 <span className='countryCard'>{countryName}</span>
                 <img src={urlIcon} alt='Ícone de tempo' />
