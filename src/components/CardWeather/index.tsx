@@ -18,6 +18,7 @@ function CardWeather({ cityName }: CityProp) {
     const { setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
 
     const cardRef = useRef<HTMLDivElement>(null);
+    const humidityRef = useRef<HTMLDivElement>(null);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -47,6 +48,7 @@ function CardWeather({ cityName }: CityProp) {
 
             if (urlImg.includes('n')) {
                 cardRef.current!.style.color = '#fff';
+                humidityRef.current!.style.color = '#fff';
             }
 
             cardRef.current!.style.backgroundImage = `url(${require(`../../assets/weathers/${urlImg}`)})`;
@@ -80,16 +82,14 @@ function CardWeather({ cityName }: CityProp) {
                 <span className='countryCard'>{countryName}</span>
                 <img src={urlIcon} alt='Ícone de tempo' />
                 <h2 className='tempCard'><span>{temp}</span>&deg;</h2>
-                <div className='bottomCard'>
+                <div className='bottomCard' ref={humidityRef}>
                     <img src={glyph} alt='Glifo' />
                     <h4>{humidity}%</h4>
                     <span>umidade</span>
                 </div>
-
             </div>
             {delState && <DelButton cityName={cityName} />}
         </div>
-
     );
 }
 
