@@ -43,6 +43,13 @@ function CardWeather({ cityName }: CityProp) {
             setTemp(parseInt(data.main.temp));
             setHumidity(data.main.humidity);
 
+            const urlImg: string = data.weather[0].icon + '.jpg';
+
+            if (urlImg.includes('n')) {
+                cardRef.current!.style.color = '#fff';
+            }
+
+            cardRef.current!.style.backgroundImage = `url(${require(`../../assets/weathers/${urlImg}`)})`;
 
         } catch (error) {
             setErrorState(true);
