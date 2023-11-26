@@ -4,12 +4,14 @@ import CityProp from '../../types/cityProp';
 
 import apiWeather from '../../services/apiWeather';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Country } from 'country-state-city';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 function DetachField({ cityName }: CityProp) {
+
+    const detachRef = useRef<HTMLDivElement>(null);
 
     const [showDetach, setShowDetach] = useState<boolean>(false);
 
@@ -55,6 +57,14 @@ function DetachField({ cityName }: CityProp) {
 
         const { data } = response;
 
+        const urlImg: string = data.weather[0].icon + '.jpg';
+
+        if (urlImg.includes('n')) {
+            detachRef.current!.style.color = '#fff';
+        }
+
+        detachRef.current!.style.backgroundImage = `url(${require(`../../assets/weathers/${urlImg}`)})`;
+
         const timezone = data.timezone / 3600;
 
         setMoment(timezone);
@@ -88,12 +98,14 @@ function DetachField({ cityName }: CityProp) {
     setInterval(timing, 1000);
 
     useEffect(() => {
-        getInfo();
+        setTimeout(() => {
+            getInfo();
+        }, 1000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div className='fieldDetach'>
+        <div className='fieldDetach' ref={detachRef}>
             {showDetach &&
                 <>
                     <div className='leftDetails'>
