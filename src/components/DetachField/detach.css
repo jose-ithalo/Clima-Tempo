@@ -1,10 +1,8 @@
 .fieldDetach {
-    background: url('../../assets/weather.png'), lightgray 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
-    color: #FFF;
 
     display: flex;
     align-items: flex-end;
