@@ -98,15 +98,13 @@ function DetachField({ cityName }: CityProp) {
     setInterval(timing, 1000);
 
     useEffect(() => {
-        setTimeout(() => {
-            getInfo();
-        }, 1000);
+        getInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div className='fieldDetach' ref={detachRef}>
-            {showDetach &&
+            {showDetach ?
                 <>
                     <div className='leftDetails'>
                         <div>
@@ -122,7 +120,14 @@ function DetachField({ cityName }: CityProp) {
                         <h2>{timeCity}</h2>
                         <h3>{weekDay}</h3>
                     </div>
-                </>
+                </> :
+                <div className='noDetach'>
+                    <h1>Destaque uma cidade!</h1>
+                    <p>
+                        Click em uma cidade que já foi adicionada <br />
+                        e selecione a opção <strong>Destacar</strong>.
+                    </p>
+                </div>
             }
 
         </div>
