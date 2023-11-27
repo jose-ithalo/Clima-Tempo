@@ -34,6 +34,26 @@
     font-weight: 400;
 }
 
+.noDetach {
+    color: #070752;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.noDetach h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
 .rightDetails h3::first-letter {
     text-transform: uppercase;
 }
