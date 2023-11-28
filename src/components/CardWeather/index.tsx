@@ -15,10 +15,11 @@ import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
-    const { setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
+    const { deletedCity, setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
 
     const cardRef = useRef<HTMLDivElement>(null);
     const humidityRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const [delState, setDelState] = useState<boolean>(false);
 
@@ -68,13 +69,17 @@ function CardWeather({ cityName }: CityProp) {
         setChosenCity(cityName);
     }
 
+    if (deletedCity === cityName) {
+        containerRef.current!.style.display = 'none';
+    }
+
     useEffect(() => {
         showInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div className='cardContainer'
+        <div className='cardContainer' ref={containerRef}
             onMouseEnter={() => setDelState(true)}
             onMouseLeave={() => setDelState(false)}>
             <div className="card" ref={cardRef} onClick={showModal}>
