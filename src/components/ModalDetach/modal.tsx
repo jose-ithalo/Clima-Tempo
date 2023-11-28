@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 function ModalDetach() {
 
-    const { chosenCity, errorState, setErrorState, setDetachState } = useContext<any>(fileContext);
+    const { chosenCity, errorState, setErrorState, setDetachState, setDeletedCity } = useContext<any>(fileContext);
     const token: string | null = localStorage.getItem('token');
 
     async function detachCity() {
@@ -45,7 +45,9 @@ function ModalDetach() {
                     city: chosenCity
                 },
             });
-            window.location.reload();
+
+            setDeletedCity(chosenCity);
+            setDetachState(false);
 
         } catch (error) {
             setErrorState(true);
