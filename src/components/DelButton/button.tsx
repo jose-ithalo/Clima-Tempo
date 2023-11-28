@@ -10,7 +10,7 @@ import { useContext } from 'react';
 
 function DelButton({ cityName }: CityProp) {
 
-    const { setErrorDelete } = useContext<any>(fileContext);
+    const { setErrorDelete, setDeletedCity } = useContext<any>(fileContext);
 
     async function removeCity() {
 
@@ -25,7 +25,8 @@ function DelButton({ cityName }: CityProp) {
                 },
             });
 
-            window.location.reload();
+            setDeletedCity(cityName);
+
         } catch (error) {
             setErrorDelete(true);
 
