@@ -15,7 +15,9 @@ import { Country } from 'country-state-city';
 
 function CardWeather({ cityName }: CityProp) {
 
-    const { deletedCity, setErrorState, setModalState, setDetachState, setChosenCity } = useContext<any>(fileContext);
+    const {
+        deletedCity, setErrorState, setModalState, setDetachState, setChosenCity
+    } = useContext<any>(fileContext);
 
     const cardRef = useRef<HTMLDivElement>(null);
     const humidityRef = useRef<HTMLDivElement>(null);
