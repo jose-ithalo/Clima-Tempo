@@ -1,9 +1,9 @@
 import './home.css';
-import menuIcon from '../../assets/menuIcon.svg';
 import logout from '../../assets/logout.svg';
 import avatar from '../../assets/avatar.svg';
 import plus from '../../assets/plus.svg';
 
+import BasicMenu from '../../components/Menu/menu';
 import DetachField from '../../components/DetachField/detach';
 import CardWeather from '../../components/CardWeather';
 import ModalSearch from '../../components/ModalSearch/modal';
@@ -94,7 +94,7 @@ function Home() {
             {stateLoading ? <Loading /> :
                 <>
                     <div className='sideBar'>
-                        <img src={menuIcon} alt="Menu" title='Menu' className='iconBar' />
+                        <BasicMenu />
                         <img src={logout} alt="Logout" title='Sair' className='iconBar' onClick={handleLogout} />
                     </div>
                     <div className='contentHome'>
