@@ -1,13 +1,13 @@
 .btnMenu {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 
 .btnMenu:hover {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .menuItem {
-    cursor: default;
+    cursor: default !important;
 }
 
 .scale {
