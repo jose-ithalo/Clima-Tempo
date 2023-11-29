@@ -1,5 +1,9 @@
 @media (max-width: 480px) {
 
+    .btnMenu {
+        margin-left: 5px !important;
+    }
+
     .fieldDetach {
         align-items: flex-start;
     }
@@ -10,6 +14,10 @@
 
     .formSearch {
         flex-direction: column;
+    }
+
+    .iconBar {
+        margin-right: -15px;
     }
 
     .modalDetach {
@@ -95,6 +103,10 @@
 
 @media (max-width: 835px) {
 
+    .btnMenu {
+        margin-bottom: 0 !important;
+    }
+
     .contentHome {
         width: 100%;
     }
@@ -107,9 +119,6 @@
         padding: 0 10px 0 40px;
     }
 
-    .iconBar {
-        margin-left: 20px;
-    }
 
     main {
         padding: 15px 8px 0 8px;
@@ -119,7 +128,7 @@
         flex-direction: row-reverse;
         position: absolute;
         top: 20px;
-        left: 15%;
+        left: 20%;
 
         height: 50px;
     }
