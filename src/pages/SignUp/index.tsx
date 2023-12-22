@@ -14,7 +14,7 @@ function SignUp() {
         <div className="container">
             <StartImg />
 
-            <UserSide headline='Crie sua conta' inputName={true} btnAction='Registrar' />
+            <UserSide headline='Crie sua conta' inputName={true} inputPass={true} btnAction='Registrar' />
 
             {errorState && <ErrorAlert content={errorContent} />}
             {successState && <SuccessAlert />}

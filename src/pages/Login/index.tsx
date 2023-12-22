@@ -22,7 +22,7 @@ function Login() {
             <StartImg />
 
             <UserSide headline='Olá, seja bem vindo(a)!' inputName={false}
-                btnAction='Entrar' passForget={true} linkAction={true} />
+                inputPass={true} btnAction='Entrar' passForget={true} linkAction={true} />
 
             {errorState && <ErrorAlert content={errorContent} />}
         </div>

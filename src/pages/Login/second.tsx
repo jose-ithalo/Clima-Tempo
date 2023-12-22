@@ -22,7 +22,7 @@ function SecondLogin() {
             <StartImg />
 
             <UserSide headline='Olá, novamente!' inputName={false}
-                btnAction='Entrar' passForget={true} />
+                inputPass={true} btnAction='Entrar' passForget={true} />
 
             {errorState && <ErrorAlert content={errorContent} />}
         </div>
