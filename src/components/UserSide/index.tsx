@@ -142,7 +142,7 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                 </button>
             </form>
 
-            {passForget && <span className='redirection'>Esqueci a senha</span>}
+            {passForget && <Link to='/Forget' className='redirection'>Esqueci a senha</Link>}
 
             {linkAction && <Link to='/SignUp' className='redirection'>Criar conta</Link>}
 
