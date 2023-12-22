@@ -17,7 +17,7 @@ import fileContext from '../../context/fileContext';
 import { keyboardKey } from '@testing-library/user-event';
 
 
-function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TForm) {
+function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkAction }: TForm) {
 
     const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
 
@@ -123,12 +123,14 @@ function UserSide({ headline, inputName, btnAction, passForget, linkAction }: TF
                 {errors.email?.type === 'required' && <p className='errorInfo'>Digite seu e-mail</p>}
                 {errors.email?.type === 'validate' && <p className='errorInfo'>Digite um email válido com @</p>}
 
-
-                <div className='formGroup'>
-                    <input type='password' placeholder='Senha' onKeyUp={inputSubmit}
-                        {...register('password', { required: true, minLength: 5 })} />
-                    <img src={padlock} alt="padlock" className='iconInput' />
-                </div>
+                {
+                    inputPass &&
+                    <div className='formGroup'>
+                        <input type='password' placeholder='Senha' onKeyUp={inputSubmit}
+                            {...register('password', { required: true, minLength: 5 })} />
+                        <img src={padlock} alt="padlock" className='iconInput' />
+                    </div>
+                }
                 {errors.password?.type === 'required' && <p className='errorInfo'>Digite sua senha</p>}
                 {
                     errors.password?.type === 'minLength' &&
