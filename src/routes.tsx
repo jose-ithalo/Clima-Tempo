@@ -5,6 +5,7 @@ import fileContext from "./context/fileContext";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import SecondLogin from "./pages/Login/second";
+import Forget from "./pages/Forget";
 import Home from "./pages/Home";
 
 import RouterProp from "./types/routerProp";
@@ -54,6 +55,7 @@ function TheRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/Login" element={<SecondLogin />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Forget" element={<Forget />} />
 
         <Route element={<ProtectedRoutes redirectTo={'/'} />}>
           <Route path="/Home" element={<Home />} />
