@@ -89,6 +89,10 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                 }
             }
         }
+
+        if (btnAction === 'Enviar') {
+            console.log(data.email);
+        }
     }
 
     function inputSubmit(evt: keyboardKey): void {
