@@ -157,6 +157,12 @@
     }
 }
 
+@media(max-width: 1140px) and (min-height: 900px) {
+    .userArea {
+        background-size: cover;
+    }
+}
+
 @media (max-width: 1140px) {
 
     .userArea {
@@ -180,7 +186,6 @@
 
     .userArea h2 {
         color: rgba(255, 255, 255, 1);
-        ;
         text-align: center;
     }
 }
