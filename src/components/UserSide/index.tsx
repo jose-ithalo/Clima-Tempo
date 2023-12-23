@@ -91,7 +91,21 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
         }
 
         if (btnAction === 'Enviar') {
-            console.log(data.email);
+
+            try {
+                await api.post('/emails', {
+                    email: data.email
+                });
+
+                console.log('Mensagem enviada');
+
+                setTimeout((): void => {
+                    navigate('/Login');
+                }, 5000);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
