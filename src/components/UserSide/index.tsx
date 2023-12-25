@@ -105,6 +105,19 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
 
             } catch (error) {
                 console.log(error);
+                if (error !== null && typeof error === 'object'
+                    && 'response' in error && typeof error.response === 'object') {
+
+                    const { data } = error.response as AxiosResponse;
+
+                    if ('message' in data) {
+                        setErrorContent(data.message);
+                        setErrorState(true);
+                        setTimeout((): void => {
+                            setErrorState(false);
+                        }, 7000);
+                    }
+                }
             }
         }
     }
