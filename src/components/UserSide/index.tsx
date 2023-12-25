@@ -104,7 +104,6 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                 }, 5000);
 
             } catch (error) {
-                console.log(error);
                 if (error !== null && typeof error === 'object'
                     && 'response' in error && typeof error.response === 'object') {
 
