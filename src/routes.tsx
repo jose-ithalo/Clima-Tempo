@@ -28,6 +28,7 @@ function TheRoutes() {
   const [errorContent, setErrorContent] = useState<string>('');
 
   const [successState, setSuccessState] = useState<boolean>(false);
+  const [sentMail, setSentMail] = useState<boolean>(false);
 
   const [detachState, setDetachState] = useState<boolean>(false);
   const [modalState, setModalState] = useState<boolean>(false);
@@ -47,7 +48,8 @@ function TheRoutes() {
       {
         errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState,
         modalState, setModalState, weatherData, setWeatherData, errorDelete, setErrorDelete,
-        detachState, setDetachState, chosenCity, setChosenCity, deletedCity, setDeletedCity, navigate
+        detachState, setDetachState, chosenCity, setChosenCity, deletedCity, setDeletedCity,
+        sentMail, setSentMail, navigate
       }
     }>
 
