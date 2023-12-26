@@ -8,16 +8,19 @@ import fileContext from '../../context/fileContext';
 
 function Forget() {
 
-    const { errorContent, errorState } = useContext<any>(fileContext);
+    const { errorContent, errorState, sentMail } = useContext<any>(fileContext);
 
     return (
         <div className="container">
             <StartImg />
 
-            {/* <UserSide headline='Digite seu email cadastrado para redefinição de senha' inputName={false}
-                inputPass={false} btnAction='Enviar' passForget={false} linkAction={false} /> */}
+            {
+                !sentMail ?
+                    <UserSide headline='Digite seu email cadastrado para redefinição de senha' inputName={false}
+                        inputPass={false} btnAction='Enviar' passForget={false} linkAction={false} /> :
 
-            <Checked />
+                    <Checked />
+            }
 
             {errorState && <ErrorAlert content={errorContent} />}
         </div>
