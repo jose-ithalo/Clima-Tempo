@@ -72,6 +72,10 @@
         margin-top: 25px;
     }
 
+    .checked h1 {
+        padding: 0 15px;
+    }
+
     .cityInfo {
         font-size: 18px;
     }
@@ -109,6 +113,10 @@
 
     .contentHome {
         width: 100%;
+    }
+
+    .checkedImg {
+        width: 60%;
     }
 
     .fieldDetach {
@@ -158,16 +166,18 @@
 }
 
 @media(max-width: 1140px) and (min-height: 900px) {
-    .userArea {
+
+    .userArea,
+    .checked {
         background-size: cover;
     }
 }
 
 @media (max-width: 1140px) {
 
-    .userArea {
-        background-image: url('../assets/leftContent.png');
-        width: 100%;
+    .checked h1 {
+        color: #b2d3b2;
+        letter-spacing: 2.5px;
     }
 
     .hiddenTitle {
@@ -182,6 +192,12 @@
 
     .startImg {
         display: none;
+    }
+
+    .userArea,
+    .checked {
+        background-image: url('../assets/leftContent.png');
+        width: 100%;
     }
 
     .userArea h2 {
