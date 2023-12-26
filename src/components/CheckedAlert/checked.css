@@ -1,0 +1,36 @@
+.checked {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    width: calc(100vw - 60%);
+
+    text-align: center;
+}
+
+.checked h1 {
+    color: #008000;
+    font-size: 25px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.checkedImg {
+    animation-name: growElement;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    margin-top: 50px;
+    width: 35%;
+}
+
+@keyframes growElement {
+
+    from {
+        transform: scale(0.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
