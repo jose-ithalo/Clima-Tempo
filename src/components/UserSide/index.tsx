@@ -19,7 +19,7 @@ import { keyboardKey } from '@testing-library/user-event';
 
 function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkAction }: TForm) {
 
-    const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
+    const { setErrorContent, setErrorState, setSuccessState, setSentMail, navigate } = useContext<any>(fileContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
 
@@ -97,11 +97,11 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                     email: data.email
                 });
 
-                console.log('Mensagem enviada');
-
+                setSentMail(true);
                 setTimeout((): void => {
+                    setSentMail(false);
                     navigate('/Login');
-                }, 5000);
+                }, 7000);
 
             } catch (error) {
                 if (error !== null && typeof error === 'object'
