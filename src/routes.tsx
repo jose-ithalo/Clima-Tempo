@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import SecondLogin from "./pages/Login/second";
 import Forget from "./pages/Forget";
 import Home from "./pages/Home";
+import EditUser from "./pages/EditUser/edit";
 
 import RouterProp from "./types/routerProp";
 import Weather from "./types/weather";
@@ -58,6 +59,7 @@ function TheRoutes() {
         <Route path="/Login" element={<SecondLogin />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Forget" element={<Forget />} />
+        <Route path="/Edit" element={<EditUser />} />
 
         <Route element={<ProtectedRoutes redirectTo={'/'} />}>
           <Route path="/Home" element={<Home />} />
