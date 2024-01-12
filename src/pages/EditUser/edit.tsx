@@ -1,12 +1,11 @@
 import './edit.css';
+import FormEdit from '../../components/FormEdit/form';
 
 function EditUser() {
 
     return (
         <div className="editContainer">
-            <div className='editCard'>
-                Editar
-            </div>
+            <FormEdit />
         </div>
     )
 }
