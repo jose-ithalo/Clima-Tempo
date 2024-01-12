@@ -1,0 +1,44 @@
+.editCard {
+    background-color: #fff;
+    border: 2px solid #494545;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    width: 50%;
+    max-width: 1000px;
+}
+
+.editInput {
+    position: relative;
+}
+
+.editInput input {
+    background: #FFF;
+    border: 1px solid #494545;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    padding: 18px 45px;
+    width: 100%;
+
+    &::placeholder {
+        color: #333;
+        opacity: 0.3;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formEdit {
+    font-family: 'Poppins', sans-serif;
+    width: 75%;
+}
+
+.formEdit h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
