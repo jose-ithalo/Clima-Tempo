@@ -47,6 +47,11 @@ code {
   font-size: 40px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .formButton {
   background: #0575E6;
   border: transparent;
@@ -70,7 +75,7 @@ code {
 
 .iconInput {
   position: absolute;
-  bottom: 18px;
+  bottom: 35px;
   left: 20px;
 
   opacity: 0.3;
@@ -79,7 +84,7 @@ code {
 }
 
 .iconInputEmail {
-  bottom: 22px;
+  bottom: 37px;
 }
 
 .popupAlert {
