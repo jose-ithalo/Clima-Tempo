@@ -17,13 +17,6 @@
     margin: -10px 0 0 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-
 .formGroup {
     position: relative;
 }
@@ -33,6 +26,7 @@ form {
     border: 1px solid #EEE;
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
     padding: 18px 45px;
     width: 100%;
 
