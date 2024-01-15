@@ -4,6 +4,12 @@
         height: 92%;
         justify-content: flex-start;
         overflow-y: auto;
+
+        &::-webkit-scrollbar-button {
+            border: none;
+            border-radius: 0%;
+            height: 0;
+        }
     }
 
     .editCard h2 {
