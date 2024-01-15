@@ -2,10 +2,13 @@
 
     .editCard {
         height: 92%;
+        justify-content: flex-start;
+        overflow-y: auto;
     }
 
     .editCard h2 {
         font-size: 18px;
+        margin-top: 20px;
     }
 
     .editInput input {
