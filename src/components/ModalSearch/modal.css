@@ -51,6 +51,7 @@
 
 .buttons {
     display: flex;
+    margin-left: 15px;
 }
 
 .cityInfo {

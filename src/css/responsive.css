@@ -36,6 +36,11 @@
         margin-left: 5px !important;
     }
 
+    .buttons {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
     .editCard h2 {
         font-size: 18px;
     }
