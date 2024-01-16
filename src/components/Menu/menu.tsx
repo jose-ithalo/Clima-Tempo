@@ -7,16 +7,27 @@ import MenuItem from '@mui/material/MenuItem';
 import menuIcon from '../../assets/menuIcon.svg';
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function BasicMenu() {
+
+    const navigate = useNavigate();
+
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+
+    function handleClose() {
         setAnchorEl(null);
     };
+
+    function sendEdition() {
+        setAnchorEl(null);
+        navigate('/Edit');
+    }
 
     return (
         <div>
@@ -42,7 +53,7 @@ function BasicMenu() {
                 <MenuItem className='menuItem'>
                     Escala:<span className='scale'>Celsius</span>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>Alterar dados</MenuItem>
+                <MenuItem onClick={sendEdition}>Alterar dados</MenuItem>
                 <MenuItem onClick={handleClose}>Fechar</MenuItem>
             </Menu>
         </div>
