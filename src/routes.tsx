@@ -59,10 +59,10 @@ function TheRoutes() {
         <Route path="/Login" element={<SecondLogin />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Forget" element={<Forget />} />
-        <Route path="/Edit" element={<EditUser />} />
 
         <Route element={<ProtectedRoutes redirectTo={'/'} />}>
           <Route path="/Home" element={<Home />} />
+          <Route path="/Edit" element={<EditUser />} />
         </Route>
       </Routes>
 
