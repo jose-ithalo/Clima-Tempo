@@ -3,7 +3,7 @@ import userIcon from '../../assets/userIcon.svg';
 import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
 
-import TForm from '../../types/formType';
+import { TForm } from '../../types/formType';
 import HookForm from '../../types/hookForm';
 import AxiosResponse from '../../types/axiosResponse';
 
