@@ -20,7 +20,7 @@ function Home() {
 
     const {
         modalState, setModalState, errorDelete, errorState,
-        setErrorState, navigate, detachState
+        setErrorState, navigate, detachState, setUserData
     } = useContext<any>(fileContext);
 
     const [cityList, setCityList] = useState<string[]>([]);
@@ -48,13 +48,19 @@ function Home() {
         }
     }
 
-    async function getDetach() {
+    async function getDetach(): Promise<void> {
 
         try {
             const response = await api.get('/users/user', {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
+            });
+
+            setUserData({
+                id: response.data.id,
+                username: response.data.username,
+                email: response.data.email
             });
 
             setDetachedCity(response.data.detached);
