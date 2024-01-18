@@ -1,4 +1,4 @@
-type TForm = {
+export type TForm = {
     headline: string,
     inputName: boolean,
     inputPass: boolean,
@@ -7,4 +7,7 @@ type TForm = {
     linkAction?: boolean
 }
 
-export default TForm;
+export type TEdit = {
+    userName?: string,
+    userEmail?: string
+}
