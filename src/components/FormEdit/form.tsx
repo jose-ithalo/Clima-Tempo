@@ -39,14 +39,14 @@ function FormEdit({ userName, userEmail }: TEdit) {
             <h2>Alteração de dados</h2>
             <form className='formEdit'>
                 <div className='editInput'>
-                    <input type="text" placeholder='Novo nome' value={userName}
+                    <input type="text" placeholder='Novo nome' defaultValue={userName}
                         {...register('userName', { required: true })} />
                     <img src={userIcon} alt="Ícone usuário" className='iconInput' />
                 </div>
                 {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
 
                 <div className='editInput'>
-                    <input type="text" placeholder='Novo email' value={userEmail}
+                    <input type="text" placeholder='Novo email' defaultValue={userEmail}
                         {...register('email', { required: true, validate: (value) => validator.isEmail(value) })} />
                     <img src={emailIcon} alt="Ícone e-mail" className='iconInput iconInputEmail' />
                 </div>
