@@ -8,13 +8,30 @@ import { TEdit } from '../../types/formType';
 
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
+import api from '../../services/apiBase';
 
 function FormEdit({ userName, userEmail }: TEdit) {
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
+    const token: string | null = localStorage.getItem('token');
 
-    function onSubmit(data: HookForm): void {
-        console.log(data);
+    async function onSubmit(data: HookForm): Promise<void> {
+        try {
+            console.log(data);
+            // await api.put('/users', {
+            //     username: data.userName,
+            //     email: data.email,
+            //     password: data.password
+            // }, {
+            //     headers: {
+            //         authorization: `Bearer ${token}`
+            //     }
+            // });
+
+        } catch (error) {
+            console.log('erro');
+
+        }
     }
 
     return (
@@ -38,10 +55,9 @@ function FormEdit({ userName, userEmail }: TEdit) {
 
                 <div className='editInput'>
                     <input type="password" placeholder='Nova senha'
-                        {...register('password', { required: true, minLength: 5 })} />
+                        {...register('password', { minLength: 5 })} />
                     <img src={padlock} alt="padlock" className='iconInput' />
                 </div>
-                {errors.password?.type === 'required' && <p className='errorInfo'>Digite sua senha</p>}
 
                 {
                     errors.password?.type === 'minLength' &&
