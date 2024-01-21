@@ -6,27 +6,36 @@ import padlock from '../../assets/padlock.svg';
 import HookForm from '../../types/hookForm';
 import { TEdit } from '../../types/formType';
 
+import api from '../../services/apiBase';
+import { useContext } from 'react';
+import fileContext from '../../context/fileContext';
+
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
-import api from '../../services/apiBase';
 
 function FormEdit({ userName, userEmail }: TEdit) {
+    const { setSuccessState, navigate } = useContext<any>(fileContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
     const token: string | null = localStorage.getItem('token');
 
     async function onSubmit(data: HookForm): Promise<void> {
         try {
-            console.log(data);
-            // await api.put('/users', {
-            //     username: data.userName,
-            //     email: data.email,
-            //     password: data.password
-            // }, {
-            //     headers: {
-            //         authorization: `Bearer ${token}`
-            //     }
-            // });
+            await api.put('/users', {
+                username: data.userName,
+                email: data.email,
+                password: data.password
+            }, {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            });
+
+            setSuccessState(true);
+            setTimeout((): void => {
+                setSuccessState(false);
+                navigate('/Home');
+            }, 3000);
 
         } catch (error) {
             console.log('erro');
