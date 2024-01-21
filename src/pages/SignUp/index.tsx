@@ -17,7 +17,7 @@ function SignUp() {
             <UserSide headline='Crie sua conta' inputName={true} inputPass={true} btnAction='Registrar' />
 
             {errorState && <ErrorAlert content={errorContent} />}
-            {successState && <SuccessAlert />}
+            {successState && <SuccessAlert content='Usuário cadastrado com sucesso!' />}
         </div>
     );
 }
