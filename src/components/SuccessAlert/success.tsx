@@ -1,7 +1,9 @@
-function SuccessAlert() {
+import ContentAlert from "../../types/contentAlert";
+
+function SuccessAlert({ content }: ContentAlert) {
     return (
         <div className='popupAlert' style={{ backgroundColor: '#09ad09' }}>
-            Usuário cadastrado com sucesso!
+            {content}
         </div>
     );
 }
