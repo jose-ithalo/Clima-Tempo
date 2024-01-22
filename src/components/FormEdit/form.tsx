@@ -5,6 +5,7 @@ import padlock from '../../assets/padlock.svg';
 
 import HookForm from '../../types/hookForm';
 import { TEdit } from '../../types/formType';
+import AxiosResponse from '../../types/axiosResponse';
 
 import api from '../../services/apiBase';
 import { useContext } from 'react';
@@ -14,7 +15,7 @@ import { useForm } from 'react-hook-form';
 import validator from 'validator';
 
 function FormEdit({ userName, userEmail }: TEdit) {
-    const { setSuccessState, navigate } = useContext<any>(fileContext);
+    const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
     const token: string | null = localStorage.getItem('token');
@@ -38,8 +39,19 @@ function FormEdit({ userName, userEmail }: TEdit) {
             }, 3000);
 
         } catch (error) {
-            console.log('erro');
+            if (error !== null && typeof error === 'object'
+                && 'response' in error && typeof error.response === 'object') {
 
+                const { data } = error.response as AxiosResponse;
+
+                if ('message' in data) {
+                    setErrorContent(data.message);
+                    setErrorState(true);
+                    setTimeout((): void => {
+                        setErrorState(false);
+                    }, 4000);
+                }
+            }
         }
     }
 
