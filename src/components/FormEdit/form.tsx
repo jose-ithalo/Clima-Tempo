@@ -61,10 +61,11 @@ function FormEdit({ userName, userEmail }: TEdit) {
             <form className='formEdit'>
                 <div className='editInput'>
                     <input type="text" placeholder='Novo nome' defaultValue={userName}
-                        {...register('userName', { required: true })} />
+                        {...register('userName', { required: true, pattern: /^[A-Za-z çáéíóú]+$/i })} />
                     <img src={userIcon} alt="Ícone usuário" className='iconInput' />
                 </div>
                 {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
+                {errors.userName?.type === 'pattern' && <p className='errorInfo'>Digite apenas letras</p>}
 
                 <div className='editInput'>
                     <input type="text" placeholder='Novo email' defaultValue={userEmail}
@@ -75,7 +76,7 @@ function FormEdit({ userName, userEmail }: TEdit) {
                 {errors.email?.type === 'validate' && <p className='errorInfo'>Digite um email válido com @</p>}
 
                 <div className='editInput'>
-                    <input type="password" placeholder='Nova senha'
+                    <input type="text" placeholder='Nova senha'
                         {...register('password', { minLength: 5 })} />
                     <img src={padlock} alt="padlock" className='iconInput' />
                 </div>

@@ -136,11 +136,12 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                     inputName &&
                     <div className="formGroup">
                         <input type='text' placeholder='Nome completo' onKeyUp={inputSubmit}
-                            {...register('userName', { required: true })} />
+                            {...register('userName', { required: true, pattern: /^[A-Za-z çáéíóú]+$/i })} />
                         <img src={userIcon} alt="Ícone usuário" className='iconInput' />
                     </div>
                 }
                 {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
+                {errors.userName?.type === 'pattern' && <p className='errorInfo'>Digite apenas letras</p>}
 
                 <div className='formGroup'>
                     <input type='email' placeholder='Email' onKeyUp={inputSubmit}
