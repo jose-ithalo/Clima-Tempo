@@ -9,5 +9,6 @@ export type TForm = {
 
 export type TEdit = {
     userName?: string,
-    userEmail?: string
+    userEmail?: string,
+    resetInput?: boolean
 }
