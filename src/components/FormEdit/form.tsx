@@ -14,7 +14,7 @@ import fileContext from '../../context/fileContext';
 import { useForm } from 'react-hook-form';
 import validator from 'validator';
 
-function FormEdit({ userName, userEmail }: TEdit) {
+function FormEdit({ userName, userEmail, resetInput }: TEdit) {
     const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
@@ -57,39 +57,68 @@ function FormEdit({ userName, userEmail }: TEdit) {
 
     return (
         <div className='editCard'>
-            <h2>Alteração de dados</h2>
-            <form className='formEdit'>
-                <div className='editInput'>
-                    <input type="text" placeholder='Novo nome' defaultValue={userName}
-                        {...register('userName', { required: true, pattern: /^[A-Za-z çáéíóú]+$/i })} />
-                    <img src={userIcon} alt="Ícone usuário" className='iconInput' />
-                </div>
-                {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
-                {errors.userName?.type === 'pattern' && <p className='errorInfo'>Digite apenas letras</p>}
+            {
+                !resetInput ?
+                    <>
+                        <h2>Alteração de dados</h2>
+                        <form className='formEdit'>
+                            <div className='editInput'>
+                                <input type="text" placeholder='Novo nome' defaultValue={userName}
+                                    {...register('userName', { required: true, pattern: /^[A-Za-z çáéíóú]+$/i })} />
+                                <img src={userIcon} alt="Ícone usuário" className='iconInput' />
+                            </div>
+                            {errors.userName?.type === 'required' && <p className='errorInfo'>Digite seu nome</p>}
+                            {errors.userName?.type === 'pattern' && <p className='errorInfo'>Digite apenas letras</p>}
 
-                <div className='editInput'>
-                    <input type="text" placeholder='Novo email' defaultValue={userEmail}
-                        {...register('email', { required: true, validate: (value) => validator.isEmail(value) })} />
-                    <img src={emailIcon} alt="Ícone e-mail" className='iconInput iconInputEmail' />
-                </div>
-                {errors.email?.type === 'required' && <p className='errorInfo'>Digite seu e-mail</p>}
-                {errors.email?.type === 'validate' && <p className='errorInfo'>Digite um email válido com @</p>}
+                            <div className='editInput'>
+                                <input type="text" placeholder='Novo email' defaultValue={userEmail}
+                                    {...register('email', { required: true, validate: (value) => validator.isEmail(value) })} />
+                                <img src={emailIcon} alt="Ícone e-mail" className='iconInput iconInputEmail' />
+                            </div>
+                            {errors.email?.type === 'required' && <p className='errorInfo'>Digite seu e-mail</p>}
+                            {errors.email?.type === 'validate' && <p className='errorInfo'>Digite um email válido com @</p>}
 
-                <div className='editInput'>
-                    <input type="text" placeholder='Nova senha'
-                        {...register('password', { minLength: 5 })} />
-                    <img src={padlock} alt="padlock" className='iconInput' />
-                </div>
+                            <div className='editInput'>
+                                <input type="text" placeholder='Nova senha'
+                                    {...register('password', { minLength: 5 })} />
+                                <img src={padlock} alt="padlock" className='iconInput' />
+                            </div>
 
-                {
-                    errors.password?.type === 'minLength' &&
-                    <p className='errorInfo'>A senha deve ter no mínimo 5 caracteres</p>
-                }
+                            {
+                                errors.password?.type === 'minLength' &&
+                                <p className='errorInfo'>A senha deve ter no mínimo 5 caracteres</p>
+                            }
 
-                <button className='formButton' type='button' onClick={() => handleSubmit(onSubmit)()}>
-                    Alterar
-                </button>
-            </form>
+                            <button className='formButton' type='button' onClick={() => handleSubmit(onSubmit)()}>
+                                Alterar
+                            </button>
+                        </form>
+                    </> :
+
+                    <>
+                        <h2>Redefinição de senha</h2>
+                        <form className='formEdit'>
+                            <div className='editInput'>
+                                <input type="text" placeholder='Nova senha'
+                                    {...register('password', { required: true, minLength: 5 })} />
+                                <img src={padlock} alt="padlock" className='iconInput' />
+                            </div>
+
+                            {errors.password?.type === 'required' && <p className='errorInfo'>Digite sua senha</p>}
+                            {
+                                errors.password?.type === 'minLength' &&
+                                <p className='errorInfo'>A senha deve ter no mínimo 5 caracteres</p>
+                            }
+
+                            <button className='formButton' type='button' >
+                                Redefinir
+                            </button>
+
+                        </form>
+                    </>
+            }
+
+
         </div>
     )
 }
