@@ -13,7 +13,7 @@ function EditPass() {
     return (
         <div className="editContainer">
             <FormEdit resetInput={true} />
-            {successState && <SuccessAlert content='Os dados foram atualizados' />}
+            {successState && <SuccessAlert content='Senha redefinida com sucesso' />}
             {errorState && <ErrorAlert content={errorContent} />}
         </div>
     )
