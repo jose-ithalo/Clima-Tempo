@@ -55,6 +55,10 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
         }
     }
 
+    function resetPass(data: Pick<HookForm, 'password'>): void {
+        console.log(data.password);
+    }
+
     return (
         <div className='editCard'>
             {
@@ -110,7 +114,7 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
                                 <p className='errorInfo'>A senha deve ter no mínimo 5 caracteres</p>
                             }
 
-                            <button className='formButton' type='button' >
+                            <button className='formButton' type='button' onClick={() => handleSubmit(resetPass)()}>
                                 Redefinir
                             </button>
 
