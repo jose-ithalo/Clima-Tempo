@@ -159,7 +159,7 @@ function UserSide({ headline, inputName, inputPass, btnAction, passForget, linkA
                     <div className='formGroup'>
                         <input type='password' placeholder='Senha' onKeyUp={inputSubmit}
                             {...register('password', { required: true, minLength: 5 })} />
-                        <img src={padlock} alt="padlock" className='iconInput' />
+                        <img src={padlock} alt="Cadeado" className='iconInput' />
                     </div>
                 }
                 {errors.password?.type === 'required' && <p className='errorInfo'>Digite sua senha</p>}
