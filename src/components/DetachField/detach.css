@@ -27,6 +27,7 @@
 .fieldDetach h3 {
     font-size: 28px;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 .leftDetails h4 {
