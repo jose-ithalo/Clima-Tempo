@@ -2,6 +2,7 @@ import './form.css';
 import userIcon from '../../assets/userIcon.svg';
 import emailIcon from '../../assets/emailIcon.svg';
 import padlock from '../../assets/padlock.svg';
+import keyIcon from '../../assets/keyIcon.svg';
 
 import HookForm from '../../types/hookForm';
 import { TEdit } from '../../types/formType';
@@ -55,7 +56,8 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
         }
     }
 
-    function resetPass(data: Pick<HookForm, 'password'>): void {
+    function resetPass(data: HookForm): void {
+        console.log(data.key);
         console.log(data.password);
     }
 
@@ -103,9 +105,17 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
                         <h2>Redefinição de senha</h2>
                         <form className='formEdit'>
                             <div className='editInput'>
+                                <input type="text" placeholder='Chave'
+                                    {...register('key', { required: true })} />
+                                <img src={keyIcon} alt="Chave" className='iconInput' />
+                            </div>
+
+                            {errors.key?.type === 'required' && <p className='errorInfo'>Digite sua chave</p>}
+
+                            <div className='editInput'>
                                 <input type="text" placeholder='Nova senha'
                                     {...register('password', { required: true, minLength: 5 })} />
-                                <img src={padlock} alt="padlock" className='iconInput' />
+                                <img src={padlock} alt="Cadeado" className='iconInput' />
                             </div>
 
                             {errors.password?.type === 'required' && <p className='errorInfo'>Digite sua senha</p>}
