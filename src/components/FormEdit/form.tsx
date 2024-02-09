@@ -56,9 +56,21 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
         }
     }
 
-    function resetPass(data: HookForm): void {
-        console.log(data.key);
-        console.log(data.password);
+    async function resetPass(data: HookForm): Promise<void> {
+        try {
+            await api.patch('/users/reset', {
+                key: data.key,
+                password: data.password
+            });
+
+            setSuccessState(true);
+            setTimeout((): void => {
+                setSuccessState(false);
+            }, 3000);
+
+        } catch (error) {
+            console.log('Erro!');
+        }
     }
 
     return (
