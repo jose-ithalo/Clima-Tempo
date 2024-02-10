@@ -69,7 +69,19 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
             }, 3000);
 
         } catch (error) {
-            console.log('Erro!');
+            if (error !== null && typeof error === 'object'
+                && 'response' in error && typeof error.response === 'object') {
+
+                const { data } = error.response as AxiosResponse;
+
+                if ('message' in data) {
+                    setErrorContent(data.message);
+                    setErrorState(true);
+                    setTimeout((): void => {
+                        setErrorState(false);
+                    }, 4000);
+                }
+            }
         }
     }
 
