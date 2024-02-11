@@ -18,7 +18,7 @@ import validator from 'validator';
 function FormEdit({ userName, userEmail, resetInput }: TEdit) {
     const { setErrorContent, setErrorState, setSuccessState, navigate } = useContext<any>(fileContext);
 
-    const { register, handleSubmit, formState: { errors } } = useForm<HookForm>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<HookForm>();
     const token: string | null = localStorage.getItem('token');
 
     async function onSubmit(data: HookForm): Promise<void> {
@@ -66,6 +66,7 @@ function FormEdit({ userName, userEmail, resetInput }: TEdit) {
             setSuccessState(true);
             setTimeout((): void => {
                 setSuccessState(false);
+                reset()
             }, 3000);
 
         } catch (error) {
