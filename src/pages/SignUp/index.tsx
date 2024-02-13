@@ -3,12 +3,20 @@ import UserSide from '../../components/UserSide';
 import ErrorAlert from '../../components/ErrorAlert/error';
 import SuccessAlert from '../../components/SuccessAlert/success';
 
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import fileContext from '../../context/fileContext';
 
 function SignUp() {
 
-    const { errorContent, errorState, successState } = useContext<any>(fileContext);
+    const { errorContent, errorState, successState, navigate } = useContext<any>(fileContext);
+
+    useEffect((): void => {
+        const token: string | null = localStorage.getItem('token');
+
+        if (token) {
+            navigate("/Home")
+        }
+    })
 
     return (
         <div className="container">
