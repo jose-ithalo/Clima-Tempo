@@ -1,6 +1,5 @@
 import './home.css';
 import logout from '../../assets/logout.svg';
-import avatar from '../../assets/avatar.svg';
 import plus from '../../assets/plus.svg';
 
 import BasicMenu from '../../components/Menu/menu';
@@ -105,7 +104,10 @@ function Home() {
                     </div>
                     <div className='contentHome'>
                         <header>
-                            <img src={avatar} alt="Avatar" title='Usuário logado' />
+                            <div className='symbol'>
+                                <h4>R</h4>
+                                <h4>F</h4>
+                            </div>
                         </header>
                         <main>
                             <section>
