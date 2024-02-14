@@ -76,6 +76,22 @@ main {
     width: 8.5%;
 }
 
+.symbol {
+    background-color: #070752;
+    border: 1px solid #000;
+    border-radius: 50%;
+    color: #fff;
+    cursor: default;
+    display: flex;
+    gap: 2px;
+    padding: 10px;
+}
+
+.symbol h4 {
+    font-family: 'Roboto', Calibri, sans-serif;
+    font-size: 20px;
+}
+
 .upperContent {
     display: flex;
     align-items: center;
