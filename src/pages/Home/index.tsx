@@ -107,6 +107,10 @@ function Home() {
                     </div>
                     <div className='contentHome'>
                         <header>
+                            <div className='menuHeader'>
+                                <BasicMenu />
+                                <img src={logout} alt="Logout" title='Sair' className='iconBar' onClick={handleLogout} />
+                            </div>
                             <div className='symbol' title={fullName.join(' ')}>
                                 <h4>{fullName[0][0]}</h4>
                                 {fullName.length > 1 && <h4>{fullName[1][0]}</h4>}
