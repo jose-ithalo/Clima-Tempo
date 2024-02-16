@@ -22,6 +22,8 @@ function Home() {
         setErrorState, navigate, detachState, setUserData
     } = useContext<any>(fileContext);
 
+
+    const [fullName, setFullName] = useState<string[]>([]);
     const [cityList, setCityList] = useState<string[]>([]);
     const [detachedCity, setDetachedCity] = useState<string>('');
     const [stateLoading, setStateLoading] = useState<boolean>(true);
@@ -62,6 +64,7 @@ function Home() {
                 email: response.data.email
             });
 
+            setFullName(response.data.username.split(' '));
             setDetachedCity(response.data.detached);
 
         } catch (error) {
@@ -104,9 +107,9 @@ function Home() {
                     </div>
                     <div className='contentHome'>
                         <header>
-                            <div className='symbol'>
-                                <h4>R</h4>
-                                <h4>F</h4>
+                            <div className='symbol' title={fullName.join(' ')}>
+                                <h4>{fullName[0][0]}</h4>
+                                {fullName.length > 1 && <h4>{fullName[1][0]}</h4>}
                             </div>
                         </header>
                         <main>
