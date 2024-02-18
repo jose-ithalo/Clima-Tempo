@@ -61,10 +61,6 @@
         flex-direction: column;
     }
 
-    .iconBar {
-        margin-right: -15px;
-    }
-
     .modalDetach {
         min-width: 250px;
     }
@@ -176,18 +172,23 @@
         padding: 0 10px 0 40px;
     }
 
+    header {
+        justify-content: space-between;
+        padding: 32px 30px;
+    }
 
     main {
         padding: 15px 8px 0 8px;
     }
 
-    .sideBar {
+    .menuHeader {
+        display: flex;
+        align-items: center;
         flex-direction: row-reverse;
-        position: absolute;
-        top: 20px;
-        left: 20%;
+    }
 
-        height: 50px;
+    .sideBar {
+        display: none;
     }
 
     .weatherReports {
