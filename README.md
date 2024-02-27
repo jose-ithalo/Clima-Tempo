@@ -29,3 +29,9 @@ de um servidor SMTP.
       <td>ReactJS</td>
   </tr>
 </table>
+
+## APIs utilizadas
+
+> O fornecimento de dados tais como cidades, temperatura e condições climáticas é feito pela OpenWeather.
+
++ Link do site: https://openweathermap.org/api
