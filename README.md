@@ -21,5 +21,11 @@ de um servidor SMTP.
     <td><img height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" /></td>
     <td><img height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="ReactJS" /></td>
   </tr>
-  
+
+  <tr>
+      <td>HTML 5</td>
+      <td>CSS 3</td>
+      <td>TypeScript</td>
+      <td>ReactJS</td>
+  </tr>
 </table>
