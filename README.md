@@ -35,3 +35,8 @@ de um servidor SMTP.
 > O fornecimento de dados tais como cidades, temperatura e condições climáticas é feito pela OpenWeather.
 
 + Link do site: https://openweathermap.org/api
+
+> Para todo o funcionamento do site desde login, cadastro, atualizações e etc, desenvolvi uma API com NestJS  
+> juntamente com o ExpressJS.
+
++ Link do repositório: https://github.com/jose-ithalo/API-Clima-Tempo
