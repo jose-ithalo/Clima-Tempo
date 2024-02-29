@@ -30,11 +30,11 @@ function Home() {
 
     const token: string | null = localStorage.getItem('token');
 
-    async function showCities(): Promise<void> {
+    async function showCities(userToken: string | null): Promise<void> {
         try {
             const response = await api.get('/users/cities', {
                 headers: {
-                    authorization: `Bearer ${token}`
+                    authorization: `Bearer ${userToken}`
                 }
             });
 
@@ -87,7 +87,7 @@ function Home() {
     }
 
     useEffect(() => {
-        showCities();
+        showCities(token);
         setTimeout(() => {
             getDetach();
         }, 1000);
