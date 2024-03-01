@@ -18,66 +18,16 @@ import fileContext from '../../context/fileContext';
 function Home() {
 
     const {
-        modalState, setModalState, errorDelete, errorState,
-        setErrorState, navigate, detachState, setUserData
+        modalState, setModalState, errorDelete,
+        navigate, detachState
     } = useContext<any>(fileContext);
-
 
     const [fullName, setFullName] = useState<string[]>([]);
     const [cityList, setCityList] = useState<string[]>([]);
+    const [errorList, setErrorList] = useState<boolean>(false);
     const [detachedCity, setDetachedCity] = useState<string>('');
     const [stateLoading, setStateLoading] = useState<boolean>(true);
 
-    const token: string | null = localStorage.getItem('token');
-
-    async function showCities(userToken: string | null): Promise<void> {
-        try {
-            const response = await api.get('/users/cities', {
-                headers: {
-                    authorization: `Bearer ${userToken}`
-                }
-            });
-
-            setCityList(response.data);
-        } catch (error) {
-            setErrorState(true);
-
-            setTimeout(() => {
-                setErrorState(false);
-                localStorage.removeItem('token');
-            }, 3000);
-        }
-    }
-
-    async function getDetach(): Promise<void> {
-
-        try {
-            const response = await api.get('/users/user', {
-                headers: {
-                    authorization: `Bearer ${token}`
-                }
-            });
-
-            setUserData({
-                id: response.data.id,
-                username: response.data.username,
-                email: response.data.email
-            });
-
-            setFullName(response.data.username.split(' '));
-            setDetachedCity(response.data.detached);
-
-        } catch (error) {
-            setErrorState(true);
-
-            setTimeout(() => {
-                setErrorState(false);
-                localStorage.removeItem('token');
-            }, 3000);
-
-        }
-
-    }
 
     function handleLogout(): void {
 
@@ -87,14 +37,57 @@ function Home() {
     }
 
     useEffect(() => {
-        showCities(token);
+        async function showCities(): Promise<void> {
+            const token: string | null = localStorage.getItem('token');
+            try {
+                const response = await api.get('/users/cities', {
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                });
+
+                setCityList(response.data);
+            } catch (error) {
+                setErrorList(true);
+
+                setTimeout(() => {
+                    setErrorList(false);
+                    localStorage.removeItem('token');
+                }, 3000);
+            }
+        }
+        showCities();
+
+        async function getDetach(): Promise<void> {
+            const token: string | null = localStorage.getItem('token');
+            try {
+                const response = await api.get('/users/user', {
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                });
+
+                setFullName(response.data.username.split(' '));
+                setDetachedCity(response.data.detached);
+
+            } catch (error) {
+                setErrorList(true);
+
+                setTimeout(() => {
+                    setErrorList(false);
+                    localStorage.removeItem('token');
+                }, 3000);
+
+            }
+
+        }
         setTimeout(() => {
             getDetach();
         }, 1000);
+
         setTimeout(() => {
             setStateLoading(false);
         }, 2000);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -138,7 +131,7 @@ function Home() {
                         </main>
                     </div>
                     {modalState && <ModalSearch />}
-                    {errorState && <ErrorAlert content='Erro ao carregar dados da cidade' />}
+                    {errorList && <ErrorAlert content='Erro ao carregar dados da cidade' />}
                 </>
             }
             {detachState && <ModalDetach />}
