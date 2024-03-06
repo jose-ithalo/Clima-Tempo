@@ -12,7 +12,6 @@ import EditPass from "./pages/EditUser/editPass";
 
 import RouterProp from "./types/routerProp";
 import Weather from "./types/weather";
-import User from "./types/user";
 
 function ProtectedRoutes({ redirectTo }: RouterProp) {
 
@@ -46,18 +45,12 @@ function TheRoutes() {
     humidity: 0
   });
 
-  const [userData, setUserData] = useState<User>({
-    id: 0,
-    username: '',
-    email: ''
-  });
-
   return (
     <fileContext.Provider value={
       {
         errorState, setErrorState, errorContent, setErrorContent, successState, setSuccessState,
-        modalState, setModalState, weatherData, setWeatherData, userData, setUserData, errorDelete,
-        setErrorDelete, detachState, setDetachState, chosenCity, setChosenCity, deletedCity,
+        modalState, setModalState, weatherData, setWeatherData, errorDelete, setErrorDelete,
+        detachState, setDetachState, chosenCity, setChosenCity, deletedCity,
         setDeletedCity, sentMail, setSentMail, navigate
       }
     }>
