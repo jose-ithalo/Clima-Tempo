@@ -69,6 +69,7 @@ function Home() {
 
                 setFullName(response.data.username.split(' '));
                 setDetachedCity(response.data.detached);
+                setStateLoading(false);
 
             } catch (error) {
                 setErrorList(true);
@@ -84,10 +85,6 @@ function Home() {
         setTimeout(() => {
             getDetach();
         }, 1000);
-
-        setTimeout(() => {
-            setStateLoading(false);
-        }, 2000);
     }, []);
 
     return (
