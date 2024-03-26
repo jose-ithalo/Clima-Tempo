@@ -8,7 +8,7 @@ function Loading() {
 
     setTimeout(() => {
         setOpen(false);
-    }, 3000);
+    }, 8000);
 
     return (
         <div>
