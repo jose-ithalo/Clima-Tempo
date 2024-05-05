@@ -1,5 +1,5 @@
 import './button.css';
-import delIcon from '../../assets/deleteIcon.svg'
+import delIcon from '../../assets/deleteIcon.svg';
 
 import CityProp from '../../types/cityProp';
 
